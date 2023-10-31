@@ -1,9 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Montserrat&display=swap');
+/* font-family: 'Bungee', sans-serif; */
+
 .joguinho {
-    background-image: url(../imagens/fundoJoguinho.png);
-    width: 80%;
+    background-image: url(../imagens/Fundos/fundoJoguinho.png);
+    width: 100%;
     height: 45%;
     background-size: cover;
     background-position: bottom;
     margin-top: 2%;
-    margin-left: 10%;
+    position: relative;
+}
+
+.joguinho-veigar {
+    position: absolute;
+    top: 70%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    height: 50%;
+    /* display: none; */
+}
+
+.joguinho-play{
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Bungee', sans-serif;
+    
+    width: 300px;
+    height: 100px;
+    font-size: 32px;
+    border-radius: 75px;
+    color: #0F5257;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    background-color: #C1FF72;
+    display: block;
+
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  text-shadow: 0px 1px 0px #000;
+  filter: dropshadow(color=#000, offx=0px, offy=1px);
+
+  -webkit-box-shadow:inset 0 1px 0 #FFE5C4, 0 10px 0 #93d43dee;
+  -moz-box-shadow:inset 0 1px 0 #FFE5C4, 0 10px 0 #93d43dee;
+  box-shadow:inset 0 1px 0 #FFE5C4, 0 10px 0 #93d43dee;
+}
+
+.joguinho-play:active {
+    transform: translate(-50%, -50%) scale(0.95);
+    box-shadow: inset 0 1px 0 #FFE5C4, 0 5px 0 #93d43dee;
+}
+
+.joguinho-play:hover {
+    text-shadow: cyan -3px 0, #f0f 3px 0;
 }

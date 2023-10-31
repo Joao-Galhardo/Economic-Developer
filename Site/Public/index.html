@@ -6,18 +6,22 @@
     <title>Economic Developer</title>
 
     <link rel="stylesheet" href="./css/styleIndex.css" />
-    <!-- <link rel="stylesheet" href="./css/styleIndex(1).css"> -->
-    <link rel="stylesheet" href="./css/styleIndexJoguinho.css">
+    <link rel="stylesheet" href="./css/styleIndexMainCarrossel.css">
+    <link rel="stylesheet" href="./css/styleIndexMainMetodologia.css">
+    <link rel="stylesheet" href="./css/styleIndexJoguinho.css" />
+    <link rel="stylesheet" href="./css/styleIndexMainComposiçao.css">
+    <link rel="stylesheet" href="./css/styleIndexMainDepoimentosEFooter.css">
 
+    
   </head>
   <body>
     <header>
       <nav class="cabeçalho">
-        <img src="./imagens/Login sem fundo.png" alt="Logo" />
+        <img src="./imagens/Logos/Login sem fundo.png" alt="Logo" />
 
         <div class="botoes-cabeçalho">
-          <button>Login</button>
-          <button>Cadastre-se</button>
+          <button class="botao-cabeçalho">Login</button>
+          <button class="botao-cabeçalho">Cadastre-se</button>
         </div>
       </nav>
     </header>
@@ -27,7 +31,7 @@
         <div class="conteudo-carrossel">
           <img
             class="img-carrossel"
-            src="./imagens/imgPorquinho.jpg"
+            src="./imagens/Fundos/imgPorquinho.jpg"
             alt="imagem de um cofrinho"
           />
           <h1 class="texto-carrossel">
@@ -45,29 +49,157 @@
       </section>
       <section class="metodologia">
         <div class="espaço-quadrado">
-          <h1 class="espaço-titulo"> Inicie sua <span style="color: #0F5257;">jornada de <br> aprendizado</span> conosco!</h1>
+          <h1 class="espaço-titulo">
+            Inicie sua
+            <span style="color: #0f5257"
+              >jornada de <br />
+              aprendizado</span
+            >
+            conosco!
+          </h1>
           <div class="quadrado">
-            <h1 class="quadrado-titulo">Exploração </h1>
-            <p> <strong>Nesta fase, você se lança na descoberta.</strong> <br> É o momento de explorar novos conceitos, temas ou habilidades. Esteja aberto para absorver informações e se familiarizar com o novo território do conhecimento.</p>
+            <h1 class="quadrado-titulo">Exploração</h1>
+            <p>
+              <strong>Nesta fase, você se lança na descoberta.</strong> <br />
+              É o momento de explorar novos conceitos, temas ou habilidades.
+              Esteja aberto para absorver informações e se familiarizar com o
+              novo território do conhecimento.
+            </p>
           </div>
         </div>
 
         <div class="espaço-quadrado2">
           <div class="quadrado2">
             <h1 class="quadrado-titulo">Aplicação</h1>
-            <p> <strong>Coloque o conhecimento em prática.</strong> <br> Esta fase envolve a aplicação ativa do que foi aprendido. Seja através de exercícios práticos, projetos ou simulações, a aplicação ajuda a consolidar o conhecimento e a desenvolver habilidades práticas.</p>
+            <p>
+              <strong>Coloque o conhecimento em prática.</strong> <br />
+              Esta fase envolve a aplicação ativa do que foi aprendido. Seja
+              através de exercícios práticos, projetos ou simulações, a
+              aplicação ajuda a consolidar o conhecimento e a desenvolver
+              habilidades práticas.
+            </p>
           </div>
         </div>
       </section>
-      
+
       <section class="joguinho">
-        
+        <img
+          id="Veigar"
+          class="joguinho-veigar"
+          src="./imagens/Veigar duvida.gif"
+          alt="Veigar Perguntando"
+        />
+        <button onclick="jogar()" class="joguinho-play">
+          <p class="efeito-glitch">Play</p>
+        </button>
+      </section>
+
+      <section class="composiçao">
+
+        <div class="composicao-principal">
+          <h1 class="composicao-titulo">Composição</h1>
+          <div class="composicao-quadrado-principal">
+            <img src="./imagens/Logos/graficoSetaCima.png" alt="">
+            <h1>Macroeconomia</h1>
+          </div>
+        </div>
+
+
+        <div class="composicao-secundaria">
+
+          <div class="composicao-secundaria-quadrados">
+            <div class="composicao-quadrado-secundario">
+              <img src="./imagens/Logos/poupanca.png" alt="">
+              <h1>Microeconomia</h1>
+            </div>
+
+            <div class="composicao-quadrado-secundario">
+              <img src="./imagens/Logos/moedas.png" alt="">
+              <h1>Politica <br> Monetaria <br> e Fiscal</h1>
+            </div>
+          </div>
+
+          <div class="composicao-secundaria-quadrados">
+            <div class="composicao-quadrado-secundario">
+              <img src="./imagens/Logos/logoMaoMoeda.png" alt="">
+              <h1>Sistema <br> Financeiro</h1>
+            </div>
+            <div class="composicao-quadrado-secundario">
+              <img src="./imagens/Logos/simbolo-de-reciclagem.png" alt="">
+              <h1>Economia <br> Ambiental</h1>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+
+      <section class="depoimentos">
+
+        <div class="depoimentos-quadrados">
+          <img class="depoimentos-circulo" src="../Public/imagens/fotoMF.jpg" alt="">
+          <h1>Bruna G.</h1>
+          <p>Minha jornada educacional na Economic Developer tem sido verdadeiramente transformadora.</p>
+        </div>
+
+        <div class="depoimentos-quadrados">
+          <img class="depoimentos-circulo" src="../Public/imagens/Nunu_0.webp" alt="">
+          <h1>Nunu William</h1>
+          <p>A escola me proporcionou um ambiente estimulante, repleto de oportunidades extracurriculares que ampliaram meus horizontes.</p>
+        </div>
+        <div class="depoimentos-quadrados">
+          <img class="depoimentos-circulo" src="../Public/imagens/lulu.jpg" alt="">
+          <h1>Lulu Santos</h1>
+          <p>A Economic Developer não apenas me ensinou fatos e teorias, mas me preparou para enfrentar desafios</p>
+        </div>
 
       </section>
+      <footer class="rodape">
+        <div class="contato">
+          <div class="contato-redes">
+  
+            <h1>Contatos</h1>
+  
+            <a class="redes-sociais" href="https://www.instagram.com/galhardo_jao/">
+            <img src="./imagens/Logos/logoInstagram.png" alt="logo instagram">
+            <h1>Galhardo_Jao</h1>
+            </a>
+  
+            <a class="redes-sociais" href="https://www.linkedin.com/in/joao-galhardo-341655222/">
+              <img src="./imagens/Logos/logoLinkedin.png" alt="logo linkedin">
+              <h1>Joao Galhardo</h1>
+            </a>
+  
+            <a class="redes-sociais" href="https://github.com/Joao-Galhardo">
+              <img  src="./imagens/Logos/logoGit.png" alt="logo github">
+              <h1>Joao-Galhardo</h1>
+            </a>
+  
+            <a class="redes-sociais" href="">
+              <img src="./imagens/Logos/logoEmail.png" alt="Logo email">
+              <h1>joao.galhardo@sptech.school</h1>
+            </a>
+  
+  
+          </div>
+  
+          <div class="contato-email">
+            <h1>Fique por dentro</h1>
+            <div class="contato-ib">
+              <input class="input-email" type="text" placeholder="Endereço de e-mail">
+              <button class="botao-email">Inscreva-se</button>
+            </div>
+          </div>
+        </div>
+        <div class="endereço">
+          <h1>Rua haddock lobo, 595 - Cerqueira César, São Paulo - SP, 01414-001</h1>
+          
+        </div>
+      </footer>
     </main>
 
-    <footer></footer>
 
     <script src="./js/carrossel.js"></script>
+    <script src="./js/joguinho_play.js"></script>
   </body>
 </html>

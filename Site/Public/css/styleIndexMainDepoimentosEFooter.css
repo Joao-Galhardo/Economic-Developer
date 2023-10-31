@@ -1,0 +1,135 @@
+.depoimentos {
+    width: 100%;
+    display: flex;
+    background-color: #00072D;
+    height: 20%;
+    justify-content: space-evenly;
+
+}
+
+.depoimentos-quadrados {
+    margin-top: 3%;
+    width: 303.8px;
+    padding: 20px;
+    /* Ajuste o tamanho conforme necessário */
+    height: 401.3px;
+    /* Ajuste o tamanho conforme necessário */
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.depoimentos-circulo {
+    width: 150px; /* Ajuste o tamanho conforme necessário */
+    height: 150px; /* Ajuste o tamanho conforme necessário */
+    border-radius: 50%; /* Transforma o elemento em um círculo */
+    overflow: hidden; /* Garante que a imagem não ultrapasse os limites do círculo */
+    background-size: cover; /* Garante que a imagem cubra todo o círculo */
+    background-position: center; /* Centraliza a imagem no círculo */
+  }
+
+  .depoimentos-quadrados h1{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 26px;
+    margin-bottom: 5%;
+  }
+
+  .depoimentos-quadrados p{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    text-align: justify;
+   }
+
+.rodape {
+    background-color: #00072D;
+    width: 100%;
+    height: 8%;
+    display: flex;
+    flex-direction: column;
+}
+
+.contato {
+    width: 100%;
+    height: 80%;
+    background-color: #00072D;
+    display: flex;
+    align-items: start;
+}
+
+.contato-redes {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 5%;
+
+
+}
+
+.redes-sociais {
+    width: 45%;
+    margin-top: 1%;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    display: flex;
+
+}
+
+.redes-sociais h1 {
+    font-size: 24px;
+    margin-left: 5%;
+}
+
+.redes-sociais img {
+    height: 26px;
+}
+
+.contato-email {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    margin-top: 2%;
+}
+
+.contato-ib {
+    display: flex;
+}
+
+.input-email {
+    margin-top: 5%;
+    width: 285.8px;
+    height: 53px;
+
+}
+
+.input-email::placeholder {
+    text-align: center;
+}
+
+.botao-email {
+    margin-top: 5%;
+    width: 150px;
+    height: 53px;
+    font-size: 20px;
+    background-color: #A8D0D8;
+    margin-left: 1%;
+}
+
+.endereço {
+    width: 100%;
+    height: 20%;
+    background-color: #00072D;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    font-size: 10px;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
