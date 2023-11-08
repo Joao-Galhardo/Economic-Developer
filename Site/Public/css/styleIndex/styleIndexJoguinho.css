@@ -2,9 +2,9 @@
 /* font-family: 'Bungee', sans-serif; */
 
 .joguinho {
-    background-image: url(../imagens/Fundos/fundoJoguinho.png);
+    background-image: url(../../imagens/Fundos/fundoJoguinho.png);
     width: 100%;
-    height: 45%;
+    height: 35%;
     background-size: cover;
     background-position: bottom;
     margin-top: 2%;
@@ -14,7 +14,7 @@
 .joguinho-veigar {
     position: absolute;
     top: 70%;
-    left: 25%;
+    left: 20%;
     transform: translate(-50%, -50%);
     height: 50%;
     /* display: none; */
