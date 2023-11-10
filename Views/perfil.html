@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil do Usuário</title>
+
+    <link rel="stylesheet" href="./css/stylePerfil/stylePerfil.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+</head>
+<body>
+    <header class="rodape">
+        <img class="foto" src="./imagens/fotoMF.jpg" alt="Foto do Perfil">
+        <h1 class="title">Nome da pessoa</h1>
+        <a class="botao-ancora" href="">Início</a>
+        <a class="botao-ancora" href="">Simulador Financeiro</a>
+        <a class="botao-ancora" href="">Cursos</a>
+        <a class="botao-ancora" href="">Metas Financeiras</a>
+        <a class="botao-ancora" href="">Conversor de Moedas</a>
+        <a class="botao-ancora" href="">Sair</a>
+    </header>
+    <main class="conteiner">
+
+        <div class="superior-metas">
+            <div>
+                <h1>Minhas metas</h1>
+            </div>
+            <div></div>
+        </div>
+
+        <div class="inferior-graficos">
+                   
+            <div  class="canvas">
+            <canvas class="graficos"  id="myChart"></canvas>                   
+            <canvas class="graficos"  id="myChart2"></canvas>
+        </div>
+        
+        </div>
+    </main>
+</body>
+</html>
+
+<script>
+const ctx = document.getElementById('myChart');
+
+new Chart(ctx, {
+  type: 'pie',
+  data: {
+    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    datasets: [{
+      label: '# of Votes',
+      data: [12, 19, 3, 5, 2, 3],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    },
+    
+  }
+});
+
+const ctx2 = document.getElementById('myChart2');
+
+new Chart(ctx2, {
+  type: 'line',
+  data: {
+    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    datasets: [{
+      label: '# of Votes',
+      data: [12, 19, 3, 5, 2, 3],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    },
+    
+  }
+});
+
+
+  </script>

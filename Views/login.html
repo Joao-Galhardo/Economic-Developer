@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+
+    <link rel="stylesheet" href="./css/styleLogin/stylePrincipal.css">
+
+    
+    <title>Login</title>
+</head>
+<body>
+    <main>
+        <div class="login-container" id="login-container">
+            <div class="form-container">
+                <form class="form form-login">
+                    <img class="logo" src="./imagens/Logos/Login sem fundo.png" alt="Logo">
+                    <h1 class="title-primary">Login</h1>
+                    
+                    
+                        <input type="email" class="form-input" placeholder="Email">
+                        <input type="password" class="form-input" placeholder="Senha">
+                   
+                    <a href="#" class="form-link">Esqueceu a senha?</a>
+                    <button type="button" class="btn-primary">Logar</button>
+                    
+                </form>
+                <form class="form form-register">
+                    <img class="logo" src="./imagens/Logos/Login sem fundo.png" alt="Logo">
+                    <h1 class="title-primary">Criar Conta</h1>
+                    
+                    
+                        <input type="text" class="form-input" placeholder="Nome">
+                        <input type="email" class="form-input" placeholder="Email">
+                        <input type="password" class="form-input" placeholder="Senha">
+                        <input type="date" class="form-input" placeholder="Data de Nascimento">
+
+                        <Span>Qual seu nivel de conhecimento em Economia?</Span>
+                        <select class="select" id="select_value">
+                            <option value="">Selecione uma das opções</option>
+                            <option value="0">Não sei nada, mas gostaria de aprender</option>
+                            <option value="1">Tenho pouco conhecimento</option>
+                            <option value="2">Tenho muito conhecimento</option>
+                        </select>
+                
+                    <button type="button" class="btn-primary">Cadastrar</button>
+                   
+                </form>
+            </div>
+            <div class="overlay-container">
+                <div class="overlay">
+                    <h1 class="title-second">Bem-Vindo de Volta</h1>
+                    <p class="description">Para continuar conectado entre com suas informações pessoais</p>
+                    <button class="btn-second" id="abrir-cadastrar">Entrar</button>
+                </div>
+                <div class="overlay">
+                    <h1 class="title-second">Novo aqui?</h1>
+                    <p class="description">Inscreva-se agora e abra as
+                        portas para um mundo de possibilidades sem limites.</p>
+                    <button class="btn-second" id="abrir-login">Cadastre-se</button>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
+<script src="./js/scriptLogin.js"></script>
