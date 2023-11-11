@@ -9,7 +9,7 @@ main {
 
 .slider {
     margin: 0 auto;
-    width: 1910px;
+    width: 100vw;
     height: 800px;
     overflow: hidden;
 }
