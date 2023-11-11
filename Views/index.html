@@ -6,13 +6,23 @@
     <title>Economic Developer</title>
 
     <link rel="stylesheet" href="./css/styleIndex/styleIndex.css" />
-    <link rel="stylesheet" href="./css/styleIndex/styleIndexMainCarrossel.css">
-    <link rel="stylesheet" href="./css/styleIndex/styleIndexMainMetodologia.css">
+    <link
+    rel="stylesheet"
+    href="./css/styleIndex/styleIndexMainMetodologia.css"
+    />
     <link rel="stylesheet" href="./css/styleIndex/styleIndexJoguinho.css" />
-    <link rel="stylesheet" href="./css/styleIndex/styleIndexMainComposiçao.css">
-    <link rel="stylesheet" href="./css/styleIndex/styleIndexMainDepoimentosEFooter.css">
-
-    
+    <link
+    rel="stylesheet"
+    href="./css/styleIndex/styleIndexMainComposiçao.css"
+    />
+    <link
+    rel="stylesheet"
+    href="./css/styleIndex/styleIndexMainDepoimentosEFooter.css"
+    />
+    <link
+      rel="stylesheet"
+      href="./css/styleIndex/styleIndexMainCarrossel.css"
+    />
   </head>
   <body>
     <header>
@@ -27,12 +37,55 @@
     </header>
 
     <main>
-      <section class="carrossel">
-        <div class="conteudo-carrossel">
-          <img
-            class="img-carrossel"
-            src="./imagens/Fundos/imgPorquinho.jpg"
-            alt="imagem de um cofrinho"
+      <div class="slider">
+        <div class="slides">
+
+          <input type="radio" name="radio-btn" id="radio1">
+          <input type="radio" name="radio-btn" id="radio2">
+          <input type="radio" name="radio-btn" id="radio3">
+          <!-- <input type="radio" id="radio4"> -->
+
+          
+
+          <div class="slide first">
+            <h1 class="texto-carrossel">
+              CONSTRUA SEU<br />
+              FUTURO <br />
+              FINANCEIRO COM <br />
+              SABEDORIA
+            </h1>
+            <img src="./imagens/Fundos/imgPorquinho.jpg" alt="">
+            <a
+            style="text-decoration: none"
+            href="/login?login=true"
+            class="botao-carrossel"
+            >Venha fazer parte</a> 
+          </div>
+
+          <div class="slide">
+            <h1 class="texto-carrossel2">“O Investimento mais importante que você pode fazer é em você mesmo”</h1>
+            <h1 class="texto-carrossel2-1">Warren Buffet</h1>
+            <img src="./imagens/Investidores/1.png" alt="">
+            <a class="botao-carrossel2" href="">saiba mais sobre warren e outros investidores</a>
+          </div>
+
+
+          <div class="slide">
+            <h1 class="texto-carrossel3">Os objetivos de desenvolvimento <br> social no brasil</h1>
+            <img src="./imagens/onu-webp.webp" alt="">
+            <a class="botao-carrossel3" href="">Saiba Mais</a>
+          </div>
+          
+          <div class="navigation-auto">
+            <div class="auto-btn1"></div>
+            <div class="auto-btn2"></div>
+            <div class="auto-btn3"></div>
+            <!-- <div class="auto-btn4"></div> -->
+        </div>
+          <!-- <img
+          class="img-carrossel"
+          src="./imagens/Fundos/imgPorquinho.jpg"
+          alt="imagem de um cofrinho"
           />
           <h1 class="texto-carrossel">
             CONSTRUA SEU<br />
@@ -40,13 +93,23 @@
             FINANCEIRO COM <br />
             SABEDORIA
           </h1>
-          <a style="text-decoration: none;" href="/login?login=true" class="botao-carrossel">Venha fazer parte</a>
-        </div>
+          <a
+          style="text-decoration: none"
+          href="/login?login=true"
+          class="botao-carrossel"
+          >Venha fazer parte</a
+          > -->
 
-        <div></div>
-        <div></div>
-        <div></div>
-      </section>
+
+        </div>
+        <div class="manual-navegacao">
+          <label for="radio1" class="manual-btn"></label>
+          <label for="radio2" class="manual-btn"></label>
+          <label for="radio3" class="manual-btn"></label>
+          <!-- <label for="radio4" class="manual-btn"></label> -->
+        </div>
+      </div>
+
       <section class="metodologia">
         <div class="espaço-quadrado">
           <h1 class="espaço-titulo">
@@ -89,119 +152,139 @@
           src="./imagens/Veigar duvida.gif"
           alt="Veigar Perguntando"
         />
-        <button onclick="jogar()" class="joguinho-play">
+        <button class="joguinho-play">
           <p class="efeito-glitch">Play</p>
         </button>
 
         <div class=""></div>
-
-
       </section>
 
       <section class="composiçao">
-
         <div class="composicao-principal">
           <h1 class="composicao-titulo">Composição</h1>
           <div class="composicao-quadrado-principal">
-            <img src="./imagens/Logos/graficoSetaCima.png" alt="">
+            <img src="./imagens/Logos/graficoSetaCima.png" alt="" />
             <h1>Macroeconomia</h1>
           </div>
         </div>
 
-
         <div class="composicao-secundaria">
-
           <div class="composicao-secundaria-quadrados">
             <div class="composicao-quadrado-secundario">
-              <img src="./imagens/Logos/poupanca.png" alt="">
+              <img src="./imagens/Logos/poupanca.png" alt="" />
               <h1>Microeconomia</h1>
             </div>
 
             <div class="composicao-quadrado-secundario">
-              <img src="./imagens/Logos/moedas.png" alt="">
-              <h1>Politica <br> Monetaria <br> e Fiscal</h1>
+              <img src="./imagens/Logos/moedas.png" alt="" />
+              <h1>
+                Politica <br />
+                Monetaria <br />
+                e Fiscal
+              </h1>
             </div>
           </div>
 
           <div class="composicao-secundaria-quadrados">
             <div class="composicao-quadrado-secundario">
-              <img src="./imagens/Logos/logoMaoMoeda.png" alt="">
-              <h1>Sistema <br> Financeiro</h1>
+              <img src="./imagens/Logos/logoMaoMoeda.png" alt="" />
+              <h1>
+                Sistema <br />
+                Financeiro
+              </h1>
             </div>
             <div class="composicao-quadrado-secundario">
-              <img src="./imagens/Logos/simbolo-de-reciclagem.png" alt="">
-              <h1>Economia <br> Ambiental</h1>
+              <img src="./imagens/Logos/simbolo-de-reciclagem.png" alt="" />
+              <h1>
+                Economia <br />
+                Ambiental
+              </h1>
             </div>
           </div>
-
         </div>
       </section>
 
-
       <section class="depoimentos">
-
         <div class="depoimentos-quadrados">
-          <img class="depoimentos-circulo" src="/imagens/fotoMF.jpg" alt="">
+          <img class="depoimentos-circulo" src="/imagens/fotoMF.jpg" alt="" />
           <h1>Bruna G.</h1>
-          <p>Minha jornada educacional na Economic Developer tem sido verdadeiramente transformadora.</p>
+          <p>
+            Minha jornada educacional na Economic Developer tem sido
+            verdadeiramente transformadora.
+          </p>
         </div>
 
         <div class="depoimentos-quadrados">
-          <img class="depoimentos-circulo" src="/imagens/Nunu_0.webp" alt="">
+          <img class="depoimentos-circulo" src="/imagens/Nunu_0.webp" alt="" />
           <h1>Nunu William</h1>
-          <p>A escola me proporcionou um ambiente estimulante, repleto de oportunidades extracurriculares que ampliaram meus horizontes.</p>
+          <p>
+            A escola me proporcionou um ambiente estimulante, repleto de
+            oportunidades extracurriculares que ampliaram meus horizontes.
+          </p>
         </div>
         <div class="depoimentos-quadrados">
-          <img class="depoimentos-circulo" src="/imagens/lulu.jpg" alt="">
+          <img class="depoimentos-circulo" src="/imagens/lulu.jpg" alt="" />
           <h1>Lulu Santos</h1>
-          <p>A Economic Developer não apenas me ensinou fatos e teorias, mas me preparou para enfrentar desafios</p>
+          <p>
+            A Economic Developer não apenas me ensinou fatos e teorias, mas me
+            preparou para enfrentar desafios
+          </p>
         </div>
-
       </section>
       <footer class="rodape">
         <div class="contato">
           <div class="contato-redes">
-  
             <h1>Contatos</h1>
-  
-            <a class="redes-sociais" href="https://www.instagram.com/galhardo_jao/">
-            <img src="./imagens/Logos/logoInstagram.png" alt="logo instagram">
-            <h1>Galhardo_Jao</h1>
+
+            <a
+              class="redes-sociais"
+              href="https://www.instagram.com/galhardo_jao/"
+            >
+              <img
+                src="./imagens/Logos/logoInstagram.png"
+                alt="logo instagram"
+              />
+              <h1>Galhardo_Jao</h1>
             </a>
-  
-            <a class="redes-sociais" href="https://www.linkedin.com/in/joao-galhardo-341655222/">
-              <img src="./imagens/Logos/logoLinkedin.png" alt="logo linkedin">
+
+            <a
+              class="redes-sociais"
+              href="https://www.linkedin.com/in/joao-galhardo-341655222/"
+            >
+              <img src="./imagens/Logos/logoLinkedin.png" alt="logo linkedin" />
               <h1>Joao Galhardo</h1>
             </a>
-  
+
             <a class="redes-sociais" href="https://github.com/Joao-Galhardo">
-              <img  src="./imagens/Logos/logoGit.png" alt="logo github">
+              <img src="./imagens/Logos/logoGit.png" alt="logo github" />
               <h1>Joao-Galhardo</h1>
             </a>
-  
+
             <a class="redes-sociais" href="">
-              <img src="./imagens/Logos/logoEmail.png" alt="Logo email">
+              <img src="./imagens/Logos/logoEmail.png" alt="Logo email" />
               <h1>joao.galhardo@sptech.school</h1>
             </a>
-  
-  
           </div>
-  
+
           <div class="contato-email">
             <h1>Fique por dentro</h1>
             <div class="contato-ib">
-              <input class="input-email" type="text" placeholder="Endereço de e-mail">
+              <input
+                class="input-email"
+                type="text"
+                placeholder="Endereço de e-mail"
+              />
               <button class="botao-email">Inscreva-se</button>
             </div>
           </div>
         </div>
         <div class="endereço">
-          <h1>Rua haddock lobo, 595 - Cerqueira César, São Paulo - SP, 01414-001</h1>
-          
+          <h1>
+            Rua haddock lobo, 595 - Cerqueira César, São Paulo - SP, 01414-001
+          </h1>
         </div>
       </footer>
     </main>
-
 
     <script src="/js/carrossel.js"></script>
     <script src="/js/joguinho_play.js"></script>
