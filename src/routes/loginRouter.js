@@ -1,8 +1,10 @@
 const express = require("express");
 const router = express.Router();
 
-router.get("/",(req,res) => {
-    res.render("./siteInstitucional/login")
+
+router.get("/login", (req, res) => {
+    res.render("siteInstitucional/login"); 
+    console.log("Estou no caminho do login")
 });
 
-module.exports = router
+module.exports = router;
