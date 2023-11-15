@@ -4,6 +4,7 @@ body {
     display: flex;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
 }
 
 :root {
@@ -15,12 +16,14 @@ body {
 
 .rodape {
     height: 100%;
-    width: 20%;
+    width: 15%;
     display: flex;
     flex-direction: column;
     background-color: var(--azul-escuro);
     align-items: center;
     justify-content: space-evenly;
+    position: fixed;
+
 }
 
 .foto {

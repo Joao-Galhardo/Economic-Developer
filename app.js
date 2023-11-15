@@ -20,6 +20,7 @@ const perfilRouter = require("./src/routes/perfilRouter");
 const sobreRouter = require("./src/routes/sobreRouter");
 const odsRouter = require("./src/routes/odsRouter");
 const simuladorRouter = require("./src/routes/simuladorRouter");
+const conversorRouter = require("./src/routes/conversorRouter");
 
 app.get("/", indexRouter);
 app.get("/login", loginRouter);
@@ -27,5 +28,6 @@ app.get("/perfil", perfilRouter);
 app.get("/sobre", sobreRouter);
 app.get("/ods", odsRouter);
 app.get("/simulador", simuladorRouter);
+app.get("/conversor", conversorRouter);
 
 

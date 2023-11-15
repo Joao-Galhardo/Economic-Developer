@@ -1,0 +1,108 @@
+body {
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+}
+
+.container {
+    width: 100vw;
+    height: 100%;
+    overflow: auto;
+    align-items: center;
+    justify-content: center;
+    padding: 2% 5%;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 15%;
+}
+
+.conteudoMateria {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#conteudo1 {
+    display: none;
+}
+#conteudo2 {
+    display: none;
+}
+#conteudo3 {
+    display: none;
+}
+#conteudo4 {
+    display: none;
+}
+#conteudo5 {
+    display: none;
+}
+
+.title-primary {
+    font-size: 64px;
+    color: #00072D;
+}
+
+.title-second {
+    font-size: 40px;
+    color: #00072D;
+}
+
+.title-tertiary {
+    font-size: 36px;
+    color: #00072D;
+}
+
+.descricao {
+    font-size: 20px;
+    text-align: justify;
+}
+
+.lista-topicos {
+    height: 60%;
+    width: 60%;
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    color: #00072D;
+}
+
+.lista-topicos li{
+    font-size: 40px;
+    list-style: none;
+    border: 1px solid black;
+    text-align: center;
+    padding-left: 20px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.btn-conteudo {
+    height: 50px;
+    width: 120px;
+    border-radius: 3rem;
+    background-color: #0F5257;
+    color: white;
+}
+
+.resumo {
+    font-size: 18px;
+}
+
+
+
+.ultima {
+    margin-bottom: 5%;
+    text-align: start;
+}
+
+.leitura-recomendada {
+    margin-top: 2%;
+    align-self: start;
+}
+
