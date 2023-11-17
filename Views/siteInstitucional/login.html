@@ -33,20 +33,20 @@
                     <h1 class="title-primary">Criar Conta</h1>
                     
                     
-                        <input type="text" class="form-input" placeholder="Nome">
-                        <input type="email" class="form-input" placeholder="Email">
-                        <input type="password" class="form-input" placeholder="Senha">
-                        <input type="date" class="form-input" placeholder="Data de Nascimento">
+                        <input type="text" class="form-input" placeholder="Nome" id="input_nome">
+                        <input type="email" class="form-input" placeholder="Email" id="input_email">
+                        <input type="password" class="form-input" placeholder="Senha" id="input_senha">
+                        <input type="date" class="form-input" placeholder="Data de Nascimento" id="input_dtNasc">
 
                         <Span>Qual seu nivel de conhecimento em Economia?</Span>
-                        <select class="select" id="select_value">
-                            <option value="">Selecione uma das opções</option>
+                        <select class="select" id="select_conhecimento">
+                            <option value="NULL">Selecione uma das opções</option>
                             <option value="0">Não sei nada, mas gostaria de aprender</option>
                             <option value="1">Tenho pouco conhecimento</option>
                             <option value="2">Tenho muito conhecimento</option>
                         </select>
                 
-                    <button type="button" class="btn-primary">Cadastrar</button>
+                    <button type="button" class="btn-primary" onclick="cadastrar()">Cadastrar</button>
                    
                 </form>
             </div>
@@ -68,3 +68,59 @@
 </body>
 </html>
 <script src="./js/scriptLogin.js"></script>
+<script>
+    function cadastrar() {
+        var nomeVar = input_nome.value;
+        var emailVar = input_email.value;
+        var senhaVar = input_senha.value;
+        var dtNascVar = input_dtNasc;
+        var nivelConhecimentoVar = select_conhecimento.value
+
+        if(nomeVar == "" || emailVar == "" || senhaVar == "" || dtNascVar == "" || nivelConhecimentoVar == "NULL") {
+            alert("Todos os campos devem ser preenchidos")
+        }
+
+        fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeServer: nomeVar,
+        emailServer: emailVar,
+        senhaServer: senhaVar,
+        dtNascServer: dtNascVar,
+        nivelConhecimentoServer: nivelConhecimentoVar
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          cardErro.style.display = "block";
+          alert("Usuario Cadastrado")
+          mensagem_erro.innerHTML =
+            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+          setTimeout(() => {
+            window.location = "login.html";
+          }, "2000");
+
+          // limparFormulario();
+          // finalizarAguardar();
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        // finalizarAguardar();
+      });
+
+    return false;
+  }
+
+     
+</script>
