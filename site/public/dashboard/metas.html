@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../css/stylePerfil/stylePerfil.css">
+    <link rel="stylesheet" href="../css/stylePerfil/styleMetas.css">
+
+    <script src="../js/sessao.js"></script>
+
+</head>
+
+<body onload="validarSessao()">
+    <header class="rodape">
+        <img class="foto" src="./imagens/fotoMF.jpg" alt="Foto do Perfil">
+        <h1 class="title" id="b_usuario">Nome da pessoa</h1>
+        <a class="botao-ancora" href="./dashboard.html">Início</a>
+        <a class="botao-ancora" href="./simulador.html">Simulador Financeiro</a>
+        <a class="botao-ancora" href="./cursos.html">Cursos</a>
+        <a class="botao-ancora" href="./metas.html">Metas Financeiras</a>
+        <a class="botao-ancora" href="./conversor.html">Conversor de Moedas</a>
+        <a class="botao-ancora" onclick="limparSessao()">Sair</a>
+    </header>
+    <main>
+        <div class="container">
+            <div class="titulo-descricao">
+                <h1 class="title-meta">Criador de Metas</h1>
+                <p class="sobre">Defina aqui uma meta que você tem para si e acompanhe o seu progresso</p>
+            </div>
+            <div class="descricao-meta">
+                <label class="rotulo">Meta :</label>
+                <input class="input_meta" type="text" id="titulo_input">
+            </div>
+            <div class="descricao-meta">
+                <label class="rotulo">Valor da meta :</label>
+                <input class="input_meta" type="number" id="valorTotal_input">
+            </div>
+            <div class="descricao-meta">
+                <label class="rotulo">Data de inicio :</label>
+                <input class="input_meta" type="date" id="dtInicio_input">
+            </div>
+            <div class="descricao-meta">
+                <label class="rotulo">Data de conclusão :</label>
+                <input class="input_meta" type="date" id="dtFinal_input">
+            </div>
+            <div class="descricao-meta">
+                <label class="rotulo">Valor Inicial :</label>
+                <input class="input_meta" type="number" id="valorInicial_input">
+            </div>
+
+            <button class="btn-meta" onclick="inserir()">Criar Meta</button>
+        </div>
+    </main>
+
+</body>
+
+</html>
+
+<script>
+
+    function inserir() {
+        // aguardar();
+        console.log("Cadastrando")
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var tituloVar = titulo_input.value;
+        var valorTotalVar = valorTotal_input.value;
+        var dtInicioVar = dtInicio_input.value;
+        var dtFinalVar = dtFinal_input.value;
+        var valorInicialVar = valorInicial_input.value
+        var idUsuario = sessionStorage.ID_USUARIO
+        // var confirmacaodtInicioVar = confirmacao_senha_input.value;
+        // var empresaVar = listaEmpresas.value
+        if (
+            tituloVar == "" ||
+            valorTotalVar == "" ||
+            dtInicioVar == "" ||
+            dtFinalVar == "" ||
+            valorInicialVar == ""
+
+
+        ) {
+            return false;
+        } else {
+            // setInterval(sumirMensagem, 5000);
+        }
+
+        console.log("FORM Titulo: ", tituloVar);
+        console.log("FORM SENHA: ", valorTotalVar);
+        console.log("FORM LOGIN: ", dtInicioVar);
+        console.log("FORM SENHA: ", dtFinalVar);
+        console.log("FORM SENHA: ", valorInicialVar);
+
+        // Enviando o valor da nova input
+        fetch(`/metas/inserir/${idUsuario}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                tituloServer: tituloVar,
+                valorTotalServer: valorTotalVar,
+                dtInicioServer: dtInicioVar,
+                dtFinalServer: dtFinalVar,
+                valorInicialServer: valorInicialVar,
+
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    // cardErro.style.display = "block";
+
+                    // mensagem_erro.innerHTML =
+                    //   "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                    setTimeout(() => {
+                        window.location = "dashboard.html";
+                    }, "2000");
+
+                    // limparFormulario();
+                    // finalizarAguardar();
+                } else {
+                    throw "Houve um erro ao tentar inserir a meta!";
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+                // finalizarAguardar();
+            });
+
+        return false;
+    }
+
+
+
+</script>
