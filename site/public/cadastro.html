@@ -1,230 +1,244 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="./css/styleLogin/stylePrincipal.css">
-    
 
-    
-    <title>Login</title>
+  <link rel="stylesheet" href="./css/styleLogin/stylePrincipal.css">
+
+
+
+  <title>Login</title>
 </head>
-<body>
-    <main>
-        <div class="login-container" id="login-container">
-            <div class="form-container">
-                <form class="form form-login">
-                    <img class="logo" src="./imagens/Logos/Login sem fundo.png" alt="Logo">
-                    <h1 class="title-primary">Login</h1>
-                    
-                    
-                        <input type="email" class="form-input" placeholder="Email" id="email_input">
-                        <input type="password" class="form-input" placeholder="Senha" id="senha_input">
-                   
-                    <a href="#" class="form-link">Esqueceu a senha?</a>
-                    <button onclick="entrar()" type="button" class="btn-primary">Logar</button>
-                    
-                </form>
-                <form class="form form-register">
-                    <img class="logo" src="./imagens/Logos/Login sem fundo.png" alt="Logo">
-                    <h1 class="title-primary">Criar Conta</h1>
-                    
-                    
-                        <input type="text" class="form-input" placeholder="Nome" id="nomeCadastro_input">
-                        <input type="email" class="form-input" placeholder="Email" id="emailCadastro_input">
-                        <input type="password" class="form-input" placeholder="Senha" id="senhaCadastro_input">
-                        <input type="date" class="form-input" placeholder="Data de Nascimento" id="dtNascCadastro_input">
 
-                        <Span>Qual seu nivel de conhecimento em Economia?</Span>
-                        <select class="select" id="select_conhecimento">
-                            <option value="NULL">Selecione uma das opções</option>
-                            <option value="1">Não sei nada, mas gostaria de aprender</option>
-                            <option value="2">Tenho pouco conhecimento</option>
-                            <option value="3">Tenho muito conhecimento</option>
-                        </select>
-                
-                    <button type="button" class="btn-primary" onclick="cadastrar()">Cadastrar</button>
-                   
-                </form>
-            </div>
-            <div class="overlay-container">
-                <div class="overlay">
-                    <h1 class="title-second">Bem-Vindo de Volta</h1>
-                    <p class="description">Para continuar conectado entre com suas informações pessoais</p>
-                    <button class="btn-second" id="abrir-cadastrar">Entrar</button>
-                </div>
-                <div class="overlay">
-                    <h1 class="title-second">Novo aqui?</h1>
-                    <p class="description">Inscreva-se agora e abra as
-                        portas para um mundo de possibilidades sem limites.</p>
-                    <button class="btn-second" id="abrir-login">Cadastre-se</button>
-                </div>
-            </div>
+<body>
+  <main>
+    <div class="login-container" id="login-container">
+      <div class="form-container">
+        <form class="form form-login">
+          <img class="logo" src="./imagens/Logos/Login sem fundo.png" alt="Logo">
+          <h1 class="title-primary">Login</h1>
+
+
+          <input type="email" class="form-input" placeholder="Email" id="email_input">
+          <input type="password" class="form-input" placeholder="Senha" id="senha_input">
+
+          <a href="#" class="form-link">Esqueceu a senha?</a>
+          <button onclick="entrar()" type="button" class="btn-primary">Logar</button>
+
+        </form>
+        <form class="form form-register">
+          <img class="logo" src="./imagens/Logos/Login sem fundo.png" alt="Logo">
+          <h1 class="title-primary">Criar Conta</h1>
+
+
+          <input type="text" class="form-input" placeholder="Nome" id="nomeCadastro_input">
+          <input type="email" class="form-input" placeholder="Email" id="emailCadastro_input">
+          <input type="password" class="form-input" placeholder="Senha" id="senhaCadastro_input">
+          <input type="date" class="form-input" placeholder="Data de Nascimento" id="dtNascCadastro_input">
+
+          <Span>Qual seu nivel de conhecimento em Economia?</Span>
+          <select class="select" id="select_conhecimento">
+            <option value="NULL">Selecione uma das opções</option>
+            <option value="1">Não sei nada, mas gostaria de aprender</option>
+            <option value="2">Tenho pouco conhecimento</option>
+            <option value="3">Tenho muito conhecimento</option>
+          </select>
+
+          <button type="button" class="btn-primary" onclick="cadastrar()">Cadastrar</button>
+
+        </form>
+      </div>
+      <div class="overlay-container">
+        <div class="overlay">
+          <h1 class="title-second">Bem-Vindo de Volta</h1>
+          <p class="description">Para continuar conectado entre com suas informações pessoais</p>
+          <button class="btn-second" id="abrir-cadastrar">Entrar</button>
         </div>
-    </main>
+        <div class="overlay">
+          <h1 class="title-second">Novo aqui?</h1>
+          <p class="description">Inscreva-se agora e abra as
+            portas para um mundo de possibilidades sem limites.</p>
+          <button class="btn-second" id="abrir-login">Cadastre-se</button>
+        </div>
+      </div>
+    </div>
+  </main>
 </body>
+
 </html>
 
 <script src="./js/scriptLogin.js"></script>
 
 <script>
   function cadastrar() {
-    // aguardar();
+
     console.log("Cadastrando")
-    //Recupere o valor da nova input pelo nome do id
-    // Agora vá para o método fetch logo abaixo
+
     var nomeVarCadastro = nomeCadastro_input.value;
     var emailVarCadastro = emailCadastro_input.value;
     var senhaVarCadastro = senhaCadastro_input.value;
     var dtNascVarCadastro = dtNascCadastro_input.value;
     var nivelConhecimentoVarCadastro = select_conhecimento.value
-    // var confirmacaoSenhaVarCadastro = confirmacao_senha_input.value;
-    // var empresaVar = listaEmpresas.value
-    if (
-      nomeVarCadastro == "" ||
-      emailVarCadastro == "" ||
-      senhaVarCadastro == "" ||
-      dtNascVarCadastro == "" ||
-      nivelConhecimentoVarCadastro == ""
 
-      // confirmacaoSenhaVarCadastro == "" ||
-      // empresaVar == ""
-    ) {
-      // cardErro.style.display = "block";
-      // mensagem_erro.innerHTML =
-      //   "(Mensagem de erro para todos os campos em branco)";
+    const regexNum = /[0-9]/;
+    const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const regexLow = /[a-z]/;
+    const regexUp = /[A-Z]/;
 
-      // finalizarAguardar();
-      return false;
-    } else {
-      setInterval(sumirMensagem, 5000);
-    }
+    var erros = 0;
+
+if(nomeVarCadastro == "" || regexNum.test(nomeVarCadastro)) {
+  nomeCadastro_input.value = "";
+  alert("O nome não pode ficar vazio ou conter números, ou voce é um robo? 😱")
+  erros++;
+}
+
+if(emailVarCadastro == "" || !regexEmail.test(emailVarCadastro)) {
+  emailCadastro_input.value = "";
+  alert("Esse não é um formato de e-mail valido")
+  erros++
+}
+
+if(senhaVarCadastro == "") {
+  senhaCadastro_input.value = "";
+  erros++;
+  alert("A senha deve ser preenchida")
+} else if ((!regexNum.test(senhaVarCadastro) || !regexLow.test(senhaVarCadastro) || !regexUp.test(senhaVarCadastro) || senhaVarCadastro.length < 6)) {
+  senhaCadastro_input.value = "";
+  erros++;
+  alert("A senha deve conter ao menos um número, uma letra minúscula e uma letra maiúscula")
+}
+
+if (dtNascVarCadastro == "" || nivelConhecimentoVarCadastro == null) {
+  alert("O nivel de conhecimento e a data de nascimento devem ser preenchidos")
+  erros++
+}
+
 
     console.log("FORM LOGIN: ", nomeVarCadastro);
-        console.log("FORM SENHA: ", emailVarCadastro);
-    console.log("FORM LOGIN: ", senhaVarCadastro);
-        console.log("FORM SENHA: ", dtNascVarCadastro);
-        console.log("FORM SENHA: ", nivelConhecimentoVarCadastro);
+    console.log("FORM EMAIL: ", emailVarCadastro);
+    console.log("FORM SENHA: ", senhaVarCadastro);
+    console.log("FORM DTNASC: ", dtNascVarCadastro);
+    console.log("FORM NIVEL: ", nivelConhecimentoVarCadastro);
 
-    // Enviando o valor da nova input
-    fetch("/usuarios/cadastrar", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
-        // Agora vá para o arquivo routes/usuario.js
-        nomeServerCadastro: nomeVarCadastro,
-        emailServerCadastro: emailVarCadastro,
-        senhaServerCadastro: senhaVarCadastro,
-        dtNascServerCadastro: dtNascVarCadastro,
-        nivelConhecimentoServerCadastro: nivelConhecimentoVarCadastro,
-        
-      }),
-    })
-      .then(function (resposta) {
-        console.log("resposta: ", resposta);
+    if (erros == 0) {
+  fetch("/usuarios/cadastrar", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      // crie um atributo que recebe o valor recuperado aqui
+      // Agora vá para o arquivo routes/usuario.js
+      nomeServerCadastro: nomeVarCadastro,
+      emailServerCadastro: emailVarCadastro,
+      senhaServerCadastro: senhaVarCadastro,
+      dtNascServerCadastro: dtNascVarCadastro,
+      nivelConhecimentoServerCadastro: nivelConhecimentoVarCadastro,
+    }),
+  })
+    .then(function (resposta) {
+      console.log("resposta: ", resposta);
 
-        if (resposta.ok) {
-          // cardErro.style.display = "block";
+      if (resposta.ok) {
+        // cardErro.style.display = "block";
 
-          // mensagem_erro.innerHTML =
-          //   "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+        // mensagem_erro.innerHTML =
+        //   "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 
-          setTimeout(() => {
-            window.location = "/index.html";
-          }, "2000");
+        setTimeout(() => {
+          window.location = "/cadastro.html";
+        }, "2000");
 
-          // limparFormulario();
-          // finalizarAguardar();
-        } else {
-          throw "Houve um erro ao tentar realizar o cadastro!";
-        }
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
+        // limparFormulario();
         // finalizarAguardar();
-      });
+      } else {
+        throw "Houve um erro ao tentar realizar o cadastro!";
+      }
+    })
+    .catch(function (resposta) {
+      console.log(`#ERRO: ${resposta}`);
+      // finalizarAguardar();
+    });
 
-    return false;
+  return false;
+}
   }
 
 
   function entrar() {
-        // aguardar();
-      console.log("entrei aqui")
-        var emailVar = email_input.value;
-        var senhaVar = senha_input.value;
+    // aguardar();
+    console.log("entrei aqui")
+    var emailVar = email_input.value;
+    var senhaVar = senha_input.value;
 
-        // if (emailVar == "" || senhaVar == "") {
-        //     // cardErro.style.display = "block"
-        //     // mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-        //     // finalizarAguardar();
-        //     return false;
-        // }
-        // else {
-        //     setInterval(sumirMensagem, 5000)
-        // }
+    // if (emailVar == "" || senhaVar == "") {
+    //     // cardErro.style.display = "block"
+    //     // mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+    //     // finalizarAguardar();
+    //     return false;
+    // }
+    // else {
+    //     setInterval(sumirMensagem, 5000)
+    // }
 
-        console.log("FORM LOGIN: ", emailVar);
-        console.log("FORM SENHA: ", senhaVar);
+    console.log("FORM LOGIN: ", emailVar);
+    console.log("FORM SENHA: ", senhaVar);
 
-        fetch("/usuarios/autenticar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                emailServer: emailVar,
-                senhaServer: senhaVar,
+    fetch("/usuarios/autenticar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        emailServer: emailVar,
+        senhaServer: senhaVar,
 
-            })
-        }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!")
+      })
+    }).then(function (resposta) {
+      console.log("ESTOU NO THEN DO entrar()!")
 
-            if (resposta.ok) {
-                console.log(resposta);
+      if (resposta.ok) {
+        console.log(resposta);
 
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-                    sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.idUsuario;
-                    
-                    
+        resposta.json().then(json => {
+          console.log(json);
+          console.log(JSON.stringify(json));
+          sessionStorage.EMAIL_USUARIO = json.email;
+          sessionStorage.NOME_USUARIO = json.nome;
+          sessionStorage.ID_USUARIO = json.idUsuario;
 
-                    setTimeout(function () {
-                      
-                        window.location = "/dashboard/dashboard.html";
-                    }, 1000); // apenas para exibir o loading
 
-                });
 
-            } else {
+          setTimeout(function () {
 
-                console.log("Houve um erro ao tentar realizar o login!");
+            window.location = "/dashboard/dashboard.html";
+          }, 1000); // apenas para exibir o loading
 
-                resposta.text().then(texto => {
-                    console.error(texto);
-                    // finalizarAguardar(texto);
-                });
-            }
+        });
 
-        }).catch(function (erro) {
-            console.log(erro);
-        })
+      } else {
 
-        return false;
-    }
+        console.log("Houve um erro ao tentar realizar o login!");
 
-    function sumirMensagem() {
-        // cardErro.style.display = "none"
-    }
+        resposta.text().then(texto => {
+          console.error(texto);
+          // finalizarAguardar(texto);
+        });
+      }
+
+    }).catch(function (erro) {
+      console.log(erro);
+    })
+
+    return false;
+  }
+
+  
 
 
 </script>

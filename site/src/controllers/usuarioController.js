@@ -4,6 +4,7 @@ var usuarioModel = require("../models/usuarioModel");
 function autenticar(req, res) {
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
+    var idMeta = req.params.idMeta;
     // var tipoUsuario = req.body.tipoUsuario;
 
     if (email == undefined) {
@@ -25,7 +26,8 @@ function autenticar(req, res) {
                         email: resultado[0].email,
                         senha: resultado[0].senha,
                         dtNasc: resultado[0].dtNasc,
-                        nivelConhecimento: resultado[0].nivelConhecimento
+                        nivelConhecimento: resultado[0].nivelConhecimento,
+                        idMeta: resultado[0].idMeta
                         });
                     } else if (resultado.length == 0) {
                         res.status(403).send("Usuário e/ou senha inválido(s)");

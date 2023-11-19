@@ -1,0 +1,192 @@
+:root {
+    --azul-escuro : #00072D;
+    --azul-claro: #A8D0D8;
+    --laranja: #F29559;
+    --azul-esverdeado:#0F5257;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+main {
+    height: 100vh;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    
+}
+
+.superior-inicio {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    overflow-x: auto;
+    scrollbar-width: thin;
+}
+
+
+.title-inicio{
+    font-size: 56px;
+    color: #00072D;
+    padding-left: 2%;
+    margin: 0
+}
+
+.divisao-metas {
+    width: 200%;
+    height: 80%;
+    padding-left: 2%;
+    display: flex;
+    gap: 2%;
+}
+
+.superior-inicio::-webkit-scrollbar {
+    width: 6px;
+    border-color: #A8D0D8;
+}
+
+.superior-inicio::-webkit-scrollbar-thumb {
+    background-color: #0F5257;
+    border-radius: 6px;
+}
+
+
+.metas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 15%;
+    border: 1px solid #00072D;
+    border-radius: 3rem;
+}
+
+.title-metas {
+    align-self: flex-start;
+    padding-left: 5%;
+}
+
+.rotulos-metas {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.descricao-metas {
+    width: 40%;
+
+}
+
+.alcançado {
+    align-self: flex-end;
+    font-size: 20px;
+}
+
+
+.botoes-metas {
+    width: 100%;
+    display: flex;
+    gap:5%;
+    justify-content: end;
+    padding-right: 80px;
+}
+
+.btn-excluir {
+    color: white;
+    background-color: #FF3131;
+    width: 150px;
+    height: 50px;
+    border-radius: 40px;
+    border: 0;
+}
+
+.btn-investir {
+    width: 150px;
+    height: 50px;
+    border-radius: 40px;
+    color: white;
+    background-color: #A8D0D8;
+    border: 0;
+}
+
+.btn-salvar {
+    width: 150px;
+    height: 50px;
+    border-radius: 40px;
+    color: white;
+    background-color: #0F5257;
+    border: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.investir-metas {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    gap: 5%;
+    align-items: center;
+}
+
+#div_investir {
+    display: none;
+}
+
+#btn_salvar {
+    display: none;
+}
+
+.rotulos-investimentos {
+    display: flex;
+    flex-direction: column;
+}
+
+.rotulo {
+    font-size: 20px;
+}
+
+.valores-metas {
+    width: 40%;
+}
+
+.inferior-inicio {
+    width: 100%;
+    height: 50%;
+    display: flex;
+}
+
+.espaço-grafico {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 2%;
+}
+
+.title-canva {
+    color: #00072D;
+    align-self: flex-start;
+    padding-bottom: 2%;
+}
+
+.grafico {
+    width: 80%;
+    height: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+

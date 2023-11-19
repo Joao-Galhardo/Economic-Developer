@@ -42,6 +42,8 @@ function inserir(req, res) {
     }
 }
 
+
+
 module.exports = {
-    inserir
+    inserir,
 }

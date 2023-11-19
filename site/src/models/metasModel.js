@@ -12,6 +12,10 @@ function inserir(titulo, valorTotal, dtInicio, dtFinal, valorInicial, fkUsuario 
     return database.executar(instrucao);
 }
 
+
+
+
 module.exports = {
-    inserir
+    inserir,
+    
 }
