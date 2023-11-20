@@ -18,7 +18,7 @@
 
 </head>
 
-<body onload="validarSessao()">
+<body onload="validarSessao(), listar(), alterarTamanhoDiv()">
     <header class="rodape">
         <img class="foto" src="./imagens/fotoMF.jpg" alt="Foto do Perfil">
         <h1 class="title" id="b_usuario"></h1>
@@ -32,35 +32,8 @@
     <main>
         <div class="superior-inicio">
             <h1 class="title-inicio">Minhas Metas</h1>
-            <div id="div_funcaoMeta" class="divisao-metas">
-                <div class="metas">
-                    <h2 class="title-metas">Meta 1</h1>
-                        <div class="rotulos-metas">
-                            <div class="descricao-metas">
-                                <h3 class="alcançado">Valor Atual</h3>
-                                <h3 class="alcançado">% Alcançada</h3>
-                            </div>
-                            <div class="valores-metas">
-                                <h3>R$ <span></span></h3>
-                                <h3><span></span> %</h3>
-                            </div>
-                        </div>
-                        <div class="botoes-metas">
-                            <button class="btn-excluir">Excluir</button>
-                            <button class="btn-investir" id="btn_investir" onclick="abrirInvestir()">Investir</button>
-                        </div>
-                        <div class="investir-metas" id="div_investir">
-                            <div class="rotulos-investimentos">
-                                <label class="rotulo">Valor do investimento</label>
-                                <label class="rotulo" style="align-self: flex-end;">Data</label>
-                            </div>
-                            <div class="rotulos-investimentos">
-                                <input type="number" id="valorInvestido_input">
-                                <input type="date" id="dtInvestimento_input">
-                            </div>
-                        </div>
-                        <button id="btn_salvar" class="btn-salvar" onclick="investir()">Salvar</button>
-                </div>
+            <div id="div_funcaoMeta"  class="divisao-metas">
+                
             </div>
         </div>
         <div class="inferior-inicio">
@@ -70,7 +43,7 @@
                     <canvas id="myChart"></canvas>
                 </div>
             </div>
-            <div class="espaço-grafico">
+            <div  class="espaço-grafico">
                 <h1 class="title-canva">Investimentos por mês</h1>
                 <div class="grafico">
                     <canvas id="myChart2"></canvas>
@@ -85,6 +58,21 @@
 
 <script>
 
+    
+    function alterarTamanhoDiv() {
+        var tamanhoDiv = div_funcaoMeta.children.length;
+        var tamanhoNecessario = 0;
+
+        for(var i = 0; i < tamanhoDiv; i++) {
+
+            div_funcaoMeta.style.width += 70 + '%'
+
+        }
+        
+
+        
+    }
+
     const graficoPorcentagem = document.getElementById('myChart');
 
     new Chart(graficoPorcentagem, {
@@ -93,7 +81,7 @@
             labels: ['Blue', 'Orange'],
             datasets: [{
                 label: '# of Votes',
-                data: [12, 19,],
+                data: [`${metas.valorTotal}`, 19,],
                 backgroundColor: [
                     'rgb(242, 149, 89)',
                     'rgb(0, 7, 45)',
@@ -173,21 +161,57 @@
   return false;
 }
   
-function listar() {
-    fetch("/dashboard/listar", {
-      method: "GET",
-    })
-      .then(function (resposta) {
-        resposta.json().then((metas) => {
-        console.log(metas)
-          metas.forEach((empresa) => {
-            listaMetas.innerHTML += `<option value='${empresa.id}'>${empresa.cnpj}</option>`;
-          });
+function listar(idUsuario) {
+    var contador = 0;
+  // Certifique-se de que você tenha um elemento HTML com o id 'listaMetas'
+  var listaMetas = document.getElementById('div_funcaoMeta');
+
+  fetch(`/dashboard/listar/${sessionStorage.ID_USUARIO}`, {
+    method: "GET",
+  })
+    .then(function (resposta) {
+      resposta.json().then((metas) => {
+        console.log(metas);
+
+        // Limpe o conteúdo atual antes de adicionar novos elementos
+        listaMetas.innerHTML = "";
+
+        metas.forEach((metas) => {
+            contador++
+          listaMetas.innerHTML += `<div class="metas">
+                    <h2 class="title-metas">${metas.titulo}</h1>
+                        <div class="rotulos-metas">
+                            <div class="descricao-metas">
+                                <h3 class="alcançado">Valor Atual</h3>
+                                <h3 class="alcançado">% Alcançada</h3>
+                            </div>
+                            <div class="valores-metas">
+                                <h3>R$ <span>${metas.valorInicial}</span></h3>
+                                <h3><span>${((metas.valorInicial / metas.valorTotal) * 100).toFixed(2)}</span> %</h3>
+                            </div>
+                        </div>
+                        <div class="botoes-metas">
+                            <button class="btn-excluir">Excluir</button>
+                            <button class="btn-investir" id="btn_investir" onclick="abrirInvestir()">Investir</button>
+                        </div>
+                        <div style="display: none;" class="investir-metas" id="div_investir">
+                            <div class="rotulos-investimentos">
+                                <label class="rotulo">Valor do investimento</label>
+                                <label class="rotulo" style="align-self: flex-end;">Data</label>
+                            </div>
+                            <div class="rotulos-investimentos">
+                                <input type="number" id="valorInvestido_input">
+                                <input type="date" id="dtInvestimento_input">
+                            </div>
+                        </div>
+                        <button style="display: none;" id="btn_salvar" class="btn-salvar" onclick="investir()">Salvar</button>
+                </div>`;
         });
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
       });
-  }
+    })
+    .catch(function (resposta) {
+      console.log(`#ERRO: ${resposta}`);
+    });
+}
 
 </script>

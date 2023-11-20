@@ -90,10 +90,10 @@
         // criarMetaDashboard()
 
         console.log("FORM Titulo: ", tituloVar);
-        console.log("FORM SENHA: ", valorTotalVar);
-        console.log("FORM LOGIN: ", dtInicioVar);
-        console.log("FORM SENHA: ", dtFinalVar);
-        console.log("FORM SENHA: ", valorInicialVar);
+        console.log("FORM ValorTotal: ", valorTotalVar);
+        console.log("FORM dtInicio: ", dtInicioVar);
+        console.log("FORM dtFinal: ", dtFinalVar);
+        console.log("FORM valorInicial: ", valorInicialVar);
 
         // Enviando o valor da nova input
         fetch(`/metas/inserir/${idUsuario}`, {
@@ -109,6 +109,7 @@
                 dtInicioServer: dtInicioVar,
                 dtFinalServer: dtFinalVar,
                 valorInicialServer: valorInicialVar,
+                fkMeta: sessionStorage.ID_META
 
             }),
         })
@@ -116,66 +117,24 @@
                 console.log("resposta: ", resposta);
 
                 if (resposta.ok) {
-                    // cardErro.style.display = "block";
-
-                    // mensagem_erro.innerHTML =
-                    //   "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
-
 
                     setTimeout(() => {
                         
                         window.location = "dashboard.html";
                     }, "2000");
 
-                    // limparFormulario();
-                    // finalizarAguardar();
+    
                 } else {
                     throw "Houve um erro ao tentar inserir a meta!";
                 }
             })
             .catch(function (resposta) {
                 console.log(`#ERRO: ${resposta}`);
-                // finalizarAguardar();
+                
             });
 
         return false;
     }
 
-//     function criarMetaDashboard() {
-//     const divDashboard = document.getElementById("div_funcaoMeta");
-
-//     divDashboard.value += `
-//     <h2 class="title-metas">Meta 1</h2>
-//     <div class="rotulos-metas">
-//         <div class="descricao-metas">
-//             <h3 class="alcançado">Valor Atual</h3>
-//             <h3 class="alcançado">% Alcançada</h3>
-//         </div>
-//         <div class="valores-metas">
-//             <h3>R$ <span></span></h3>
-//             <h3><span></span> %</h3>
-//         </div>
-//     </div>
-//     <div class="botoes-metas">
-//         <button class="btn-excluir">Excluir</button>
-//         <button class="btn-investir" id="btn_investir" onclick="abrirInvestir()">Investir</button>
-//     </div>
-//     <div class="investir-metas" id="div_investir">
-//         <div class="rotulos-investimentos">
-//             <label class="rotulo">Valor do investimento</label>
-//             <label class="rotulo" style="align-self: flex-end;">Data</label>
-//         </div>
-//         <div class="rotulos-investimentos">
-//             <input type="number" id="valorInvestido_input">
-//             <input type="date" id="dtInvestimento_input">
-//         </div>
-//     </div>
-//     <button id="btn_salvar" class="btn-salvar" onclick="investir()">Salvar</button>
-// `;
-
-
-
-// }
 
 </script>

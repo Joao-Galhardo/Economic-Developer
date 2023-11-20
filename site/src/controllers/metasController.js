@@ -8,6 +8,7 @@ function inserir(req, res) {
     var dtFinal = req.body.dtFinalServer;
     var valorInicial = req.body.valorInicialServer;
     var fkUsuario = req.params.idUsuario;
+    var fkMeta = req.params.idMeta
 
     // Faça as validações dos valores
     if (titulo == undefined) {
@@ -24,7 +25,7 @@ function inserir(req, res) {
      else {
 
         // Passe os valores como parâmetro e vá para o arquivo metasModel.js
-        metasModel.inserir(titulo, valorTotal, dtInicio, dtFinal, valorInicial, fkUsuario)
+        metasModel.inserir(titulo, valorTotal, dtInicio, dtFinal, valorInicial, fkUsuario, fkMeta)
             .then(
                 function (resultado) {
                     res.json(resultado);

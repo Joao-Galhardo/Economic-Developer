@@ -7,7 +7,7 @@ router.post("/investir", function (req, res) {
     dashboardController.investir(req, res);
 })
 
-router.get("/listar", function(req, res) {
+router.get("/listar/:idUsuario", function(req, res) {
     dashboardController.listar(req, res);
 })
 

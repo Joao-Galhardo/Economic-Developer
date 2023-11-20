@@ -41,6 +41,7 @@ dtInicio date,
 dtFinal date,
 valorTotal Decimal(10,2),
 valorInicial Decimal(10,2),
+valorAtual Decimal(10,2).
 fkUsuario int,
 constraint fkUsuario foreign key (fkUsuario) references usuario (idUsuario)
 );
