@@ -18,7 +18,7 @@
 
 </head>
 
-<body onload="validarSessao(), listar(), alterarTamanhoDiv()">
+<body onload="validarSessao(), listar()">
     <header class="rodape">
         <img class="foto" src="./imagens/fotoMF.jpg" alt="Foto do Perfil">
         <h1 class="title" id="b_usuario"></h1>
@@ -58,21 +58,6 @@
 
 <script>
 
-    
-    function alterarTamanhoDiv() {
-        var tamanhoDiv = div_funcaoMeta.children.length;
-        var tamanhoNecessario = 0;
-
-        for(var i = 0; i < tamanhoDiv; i++) {
-
-            div_funcaoMeta.style.width += 70 + '%'
-
-        }
-        
-
-        
-    }
-
     const graficoPorcentagem = document.getElementById('myChart');
 
     new Chart(graficoPorcentagem, {
@@ -81,7 +66,7 @@
             labels: ['Blue', 'Orange'],
             datasets: [{
                 label: '# of Votes',
-                data: [`${metas.valorTotal}`, 19,],
+                data: [30, 19,],
                 backgroundColor: [
                     'rgb(242, 149, 89)',
                     'rgb(0, 7, 45)',
@@ -124,22 +109,21 @@
     });
 
 
-    function investir() {
+function investir() {
 
         var valorInvestido = Number(valorInvestido_input.value);
         var dtInvestimento = dtInvestimento_input.value;
         var idMeta = sessionStorage.ID_META
         var erros = 0;
 
-        
-
     
-    fetch("/dashboard/investir", {
+    fetch(`/dashboard/investir/${sessionStorage.ID_USUARIO}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
+    idMetaServer: idMeta,
       valorInvestidoServer: valorInvestido,
       dtInvestimentoServer: dtInvestimento,
       
@@ -213,5 +197,27 @@ function listar(idUsuario) {
       console.log(`#ERRO: ${resposta}`);
     });
 }
+
+function deletar(idAviso) {
+        console.log("Criar função de apagar post escolhido - ID" + idAviso);
+        fetch(`/avisos/deletar/${idAviso}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+
+            if (resposta.ok) {
+                window.alert("Post deletado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
+                window.location = "/dashboard/mural.html"
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
 
 </script>

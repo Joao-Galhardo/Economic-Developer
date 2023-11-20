@@ -3,6 +3,6 @@ function abrirInvestir() {
     const divInvestir = document.getElementById("div_investir");
     const btnInvestir = document.getElementById("btn_salvar");
     
-    divInvestir.style.display = divInvestir.style.display === 'none' ? 'flex' : 'none'; // Otimizado aqui
-    btnInvestir.style.display = btnInvestir.style.display === 'none' ? 'flex' : 'none'; // Otimizado aqui
+    divInvestir.style.display = divInvestir.style.display === 'none' ? 'flex' : 'none'; 
+    btnInvestir.style.display = btnInvestir.style.display === 'none' ? 'flex' : 'none'; 
 }

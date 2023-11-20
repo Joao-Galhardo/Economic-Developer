@@ -5,6 +5,8 @@ function investir(req, res) {
     var valorInvestido = req.body.valorInvestidoServer;
     var dtInvestimento = req.body.dtInvestimentoServer;
     var fkUsuario = req.params.idUsuario;
+    var fkMeta = req.body.idMetaServer;
+
 
     // Faça as validações dos valores
     if (valorInvestido == undefined) {
@@ -15,7 +17,7 @@ function investir(req, res) {
     else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        dashboardModel.investir(valorInvestido, dtInvestimento)
+        dashboardModel.investir(valorInvestido, dtInvestimento, fkUsuario, fkMeta)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -33,12 +35,7 @@ function investir(req, res) {
     }
 }
 
-// function listar(req, res) {
-//     var fkUsuario = sessionStorage.ID_USUARIO
-//     dashboardModel.listar(fkUsuario).then((resultado) => {
-//       res.status(200).json(resultado);
-//     });
-//   }
+
 
   function listar(req, res) {
     var idUsuario = req.params.idUsuario;
@@ -65,11 +62,31 @@ function investir(req, res) {
     );
 }
 
+ 
+function deletar(req, res) {
+        var idUsuario = req.params.idUsuario;
+        var idMeta = req.params.idMeta
+    
+        avisoModel.deletar(idUsuario, idMeta)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            )
+            .catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log("Houve um erro ao deletar o post: ", erro.sqlMessage);
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
 
 
 
 module.exports = {
     investir,
-    listar
+    listar,
+    deletar
 }
    
