@@ -147,7 +147,7 @@ function investir() {
   
 function listar(idUsuario) {
     var contador = 0;
-  // Certifique-se de que você tenha um elemento HTML com o id 'listaMetas'
+  
   var listaMetas = document.getElementById('div_funcaoMeta');
 
   fetch(`/dashboard/listar/${sessionStorage.ID_USUARIO}`, {
@@ -157,11 +157,11 @@ function listar(idUsuario) {
       resposta.json().then((metas) => {
         console.log(metas);
 
-        // Limpe o conteúdo atual antes de adicionar novos elementos
+      
         listaMetas.innerHTML = "";
 
         metas.forEach((metas) => {
-            contador++
+            
           listaMetas.innerHTML += `<div class="metas">
                     <h2 class="title-metas">${metas.titulo}</h1>
                         <div class="rotulos-metas">
@@ -175,8 +175,8 @@ function listar(idUsuario) {
                             </div>
                         </div>
                         <div class="botoes-metas">
-                            <button class="btn-excluir">Excluir</button>
-                            <button class="btn-investir" id="btn_investir" onclick="abrirInvestir()">Investir</button>
+                            <button class="btn-excluir" onclick="deletar(${metas.idMeta})">Excluir</button>
+                            <button class="btn-investir" id="btn_investir" onclick="abrirInvestir(${metas.idMeta})">Investir</button>
                         </div>
                         <div style="display: none;" class="investir-metas" id="div_investir">
                             <div class="rotulos-investimentos">
@@ -184,11 +184,11 @@ function listar(idUsuario) {
                                 <label class="rotulo" style="align-self: flex-end;">Data</label>
                             </div>
                             <div class="rotulos-investimentos">
-                                <input type="number" id="valorInvestido_input">
+                                <input id="valorInvestido_input">
                                 <input type="date" id="dtInvestimento_input">
                             </div>
                         </div>
-                        <button style="display: none;" id="btn_salvar" class="btn-salvar" onclick="investir()">Salvar</button>
+                        <button style="display: none;" id="btn_salvar" class="btn-salvar" onclick="editar(${metas.idMeta})">Salvar</button>
                 </div>`;
         });
       });
@@ -198,9 +198,9 @@ function listar(idUsuario) {
     });
 }
 
-function deletar(idAviso) {
-        console.log("Criar função de apagar post escolhido - ID" + idAviso);
-        fetch(`/avisos/deletar/${idAviso}`, {
+function deletar(idMeta) {
+        console.log("Criar função de apagar post escolhido - ID" + idMeta);
+        fetch(`/dashboard/deletar/${sessionStorage.ID_USUARIO}/${idMeta}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json"
@@ -208,8 +208,34 @@ function deletar(idAviso) {
         }).then(function (resposta) {
 
             if (resposta.ok) {
-                window.alert("Post deletado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
-                window.location = "/dashboard/mural.html"
+                window.location = "dashboard.html"
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
+    
+    function editar(idMeta) {
+
+        var valorInvestido = document.getElementById(`valorInvestido_input`);
+        fetch(`/dashboard/editar/${idMeta}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                valorInvestido: valorInvestido
+                
+            })
+            
+        }).then(function (resposta) {
+            console.log("valor investido do usuario" + valorInvestido)
+            if (resposta.ok) {
+                window.alert("Post atualizado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
             } else if (resposta.status == 404) {
                 window.alert("Deu 404!");
             } else {

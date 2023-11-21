@@ -11,8 +11,12 @@ router.get("/listar/:idUsuario", function(req, res) {
     dashboardController.listar(req, res);
 })
 
-router.delete("/deletar/:idUsuario", function (req, res) {
+router.delete("/deletar/:idUsuario/:idMeta", function (req, res) {
     dashboardController.deletar(req, res);
+});
+
+router.put("/editar/:idMeta", function (req, res) {
+    dashboardController.atualizarValor(req, res);
 });
 
 module.exports = router;

@@ -23,18 +23,27 @@ function buscarIdMeta(fkUsuario) {
     return database.executar(instrucao);
 }
 
-function deletar(fkUsuario, idMeta) {
-    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function deletar():", idAviso);
+function deletarMeta(idUsuario, idMeta) {
+    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function deletar():", idMeta);    
     var instrucao = `
-        DELETE FROM metas WHERE fkUsuario = ${fkUsuario} AND idMeta = ${idMeta};
+    DELETE FROM metas WHERE fkUsuario = ${idUsuario} AND idMeta = ${idMeta};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
+}
+
+function editarValor(idMeta, data, novoValor) {
+    var instrucao = ` UPDATE metas SET valorAtual = valorAtual + ${novoValor} WHERE idMeta = ${idMeta};
+    `
+   
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao)
 }
 
 module.exports = {
     investir,
     listar,
     buscarIdMeta,
-    deletar
+    deletarMeta,
+    editarValor
 }
