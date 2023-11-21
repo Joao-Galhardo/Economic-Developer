@@ -170,8 +170,8 @@ function listar(idUsuario) {
                                 <h3 class="alcançado">% Alcançada</h3>
                             </div>
                             <div class="valores-metas">
-                                <h3>R$ <span>${metas.valorInicial}</span></h3>
-                                <h3><span>${((metas.valorInicial / metas.valorTotal) * 100).toFixed(2)}</span> %</h3>
+                                <h3>R$ <span>${metas.valorAtual}</span></h3>
+                                <h3><span>${((metas.valorAtual / metas.valorTotal) * 100).toFixed(2)}</span> %</h3>
                             </div>
                         </div>
                         <div class="botoes-metas">
@@ -221,14 +221,15 @@ function deletar(idMeta) {
     
     function editar(idMeta) {
 
-        var valorInvestido = document.getElementById(`valorInvestido_input`);
+        var valorInvestido = Number(document.getElementById(`valorInvestido_input`).value);
+        console.log(valorInvestido)
         fetch(`/dashboard/editar/${idMeta}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                valorInvestido: valorInvestido
+                "valorInvestido": valorInvestido
                 
             })
             

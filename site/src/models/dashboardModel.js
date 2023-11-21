@@ -32,7 +32,7 @@ function deletarMeta(idUsuario, idMeta) {
     return database.executar(instrucao);
 }
 
-function editarValor(idMeta, data, novoValor) {
+function editarValor(idMeta, novoValor) {
     var instrucao = ` UPDATE metas SET valorAtual = valorAtual + ${novoValor} WHERE idMeta = ${idMeta};
     `
    
