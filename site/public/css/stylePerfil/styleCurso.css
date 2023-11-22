@@ -22,23 +22,10 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    display: none;
 }
 
-#conteudo1 {
-    display: none;
-}
-#conteudo2 {
-    display: none;
-}
-#conteudo3 {
-    display: none;
-}
-#conteudo4 {
-    display: none;
-}
-#conteudo5 {
-    display: none;
-}
+
 
 .title-primary {
     font-size: 64px;

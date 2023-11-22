@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../css/stylePerfil/styleDashboad.css">
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
+
     <script src="../js/sessao.js"></script>
     <script src="../js/botaoInvestir.js"></script>
     <script src="../js/metaDashboard.js"></script>
@@ -32,8 +32,8 @@
     <main>
         <div class="superior-inicio">
             <h1 class="title-inicio">Minhas Metas</h1>
-            <div id="div_funcaoMeta"  class="divisao-metas">
-                
+            <div id="div_funcaoMeta" class="divisao-metas">
+
             </div>
         </div>
         <div class="inferior-inicio">
@@ -43,7 +43,7 @@
                     <canvas id="myChart"></canvas>
                 </div>
             </div>
-            <div  class="espaço-grafico">
+            <div class="espaço-grafico">
                 <h1 class="title-canva">Investimentos por mês</h1>
                 <div class="grafico">
                     <canvas id="myChart2"></canvas>
@@ -109,60 +109,27 @@
     });
 
 
-function investir() {
 
-        var valorInvestido = Number(valorInvestido_input.value);
-        var dtInvestimento = dtInvestimento_input.value;
-        var idMeta = sessionStorage.ID_META
-        var erros = 0;
+    function listar(idUsuario) {
+        
 
-    
-    fetch(`/dashboard/investir/${sessionStorage.ID_USUARIO}`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-    idMetaServer: idMeta,
-      valorInvestidoServer: valorInvestido,
-      dtInvestimentoServer: dtInvestimento,
-      
-    }),
-  })
-    .then(function (resposta) {
-      console.log("resposta: ", resposta);
+        var listaMetas = document.getElementById('div_funcaoMeta');
 
-      if (resposta.ok) { 
-      } else {
-        throw "Houve um erro ao tentar realizar o investimento!";
-      }
-    })
-    .catch(function (resposta) {
-      console.log(`#ERRO: ${resposta}`);
-      
-    });
+        fetch(`/dashboard/listar/${sessionStorage.ID_USUARIO}`, {
+            method: "GET",
+        })
+            .then(function (resposta) {
+                resposta.json().then((metas) => {
+                    console.log(metas);
 
-  return false;
-}
-  
-function listar(idUsuario) {
-    var contador = 0;
-  
-  var listaMetas = document.getElementById('div_funcaoMeta');
+                    if(metas.length == 0) {
+                        listaMetas.innerHTML = `Você ainda não possui nenhuma meta cadastrada, cadastre a sua primeira meta`
+                    } else {
+                    listaMetas.innerHTML = "";
 
-  fetch(`/dashboard/listar/${sessionStorage.ID_USUARIO}`, {
-    method: "GET",
-  })
-    .then(function (resposta) {
-      resposta.json().then((metas) => {
-        console.log(metas);
+                    metas.forEach((metas) => {
 
-      
-        listaMetas.innerHTML = "";
-
-        metas.forEach((metas) => {
-            
-          listaMetas.innerHTML += `<div class="metas">
+                        listaMetas.innerHTML += `<div class="metas">
                     <h2 class="title-metas">${metas.titulo}</h1>
                         <div class="rotulos-metas">
                             <div class="descricao-metas">
@@ -176,9 +143,9 @@ function listar(idUsuario) {
                         </div>
                         <div class="botoes-metas">
                             <button class="btn-excluir" onclick="deletar(${metas.idMeta})">Excluir</button>
-                            <button class="btn-investir" id="btn_investir" onclick="abrirInvestir(${metas.idMeta})">Investir</button>
+                            <button class="btn-investir" onclick="abrirInvestir(${metas.idMeta})">Investir</button>
                         </div>
-                        <div style="display: none;" class="investir-metas" id="div_investir">
+                        <div style="display: none;" class="investir-metas" id="div_investir${metas.idMeta}">
                             <div class="rotulos-investimentos">
                                 <label class="rotulo">Valor do investimento</label>
                                 <label class="rotulo" style="align-self: flex-end;">Data</label>
@@ -188,17 +155,17 @@ function listar(idUsuario) {
                                 <input type="date" id="dtInvestimento_input">
                             </div>
                         </div>
-                        <button style="display: none;" id="btn_salvar" class="btn-salvar" onclick="editar(${metas.idMeta})">Salvar</button>
+                        <button style="display: none;" id="btn_salvar${metas.idMeta}" class="btn-salvar" onclick="editar(${metas.idMeta})">Salvar</button>
                 </div>`;
-        });
-      });
-    })
-    .catch(function (resposta) {
-      console.log(`#ERRO: ${resposta}`);
-    });
-}
+                    });
+                }}); 
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+    }
 
-function deletar(idMeta) {
+    function deletar(idMeta) {
         console.log("Criar função de apagar post escolhido - ID" + idMeta);
         fetch(`/dashboard/deletar/${sessionStorage.ID_USUARIO}/${idMeta}`, {
             method: "DELETE",
@@ -218,7 +185,7 @@ function deletar(idMeta) {
             console.log(`#ERRO: ${resposta}`);
         });
     }
-    
+
     function editar(idMeta) {
 
         var valorInvestido = Number(document.getElementById(`valorInvestido_input`).value);
@@ -230,13 +197,14 @@ function deletar(idMeta) {
             },
             body: JSON.stringify({
                 "valorInvestido": valorInvestido
-                
+
             })
-            
+
         }).then(function (resposta) {
             console.log("valor investido do usuario" + valorInvestido)
             if (resposta.ok) {
-                window.alert("Post atualizado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
+                window.alert("Parabéns, você esta cada dia mais próximo de sua meta");
+                window.location = "dashboard.html"
             } else if (resposta.status == 404) {
                 window.alert("Deu 404!");
             } else {

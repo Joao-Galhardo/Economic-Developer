@@ -1,17 +1,15 @@
 function mostrarInfo(id) {
-
-    // A função pega todos os elementos que contem a classe conteudoMateria e transformam todos em display none a partir do for e depois ela pega apenas o id que foi escolhi e transforma em display flex
-    
-    
-    var conteudoMateria = document.getElementsByClassName('conteudoMateria');
-    for (var i = 0; i < conteudoMateria.length; i++) {
-      conteudoMateria[i].style.display = 'none';
-    }
-  
-    
-    var conteudo = document.getElementById(id);
-    conteudo.style.display = 'flex';
+  var conteudoMateria = document.getElementsByClassName('conteudoMateria');
+  for (var i = 0; i < conteudoMateria.length; i++) {
+    conteudoMateria[i].style.display = 'none';
   }
+  
+  var conteudo = document.getElementById(id);
+  conteudo.style.display = conteudo.style.display === 'none' ? 'flex' : 'none';
+
+  conteudo.scrollIntoView({ behavior: 'smooth' });
+  // método do JavaScript que é usado para rolar a página até que um determinado elemento seja visível na janela de visualização.
+}
   
   // Aqui eu defino um evento de click para os botões, e esses botões entregam o ID para função
   
