@@ -10,10 +10,11 @@
     <link rel="stylesheet" href="../css/stylePerfil/styleCurso.css" />
 
     <script src="../js/sessao.js"></script>
+    <script src="../js/perguntas.js"></script>
 
 </head>
 
-<body onload="validarSessao()">
+<body onload="validarSessao(), aparecerQuestao()">
     <header style="position: fixed;" class="rodape">
         <img class="foto" src="./imagens/fotoMF.jpg" alt="Foto do Perfil">
         <h1 class="title" id="b_usuario">Nome da pessoa</h1>
@@ -52,26 +53,10 @@
         </ul>
 
         <ul id="listaProvas" class="lista-topicos">
-            <h1> Provas </h1>
+            <h1> Teste seu conhecimento </h1>
             <li>
-                <span>Macroeconomia</span>
+                <span>Prova</span>
                 <button id="btn-prova1" class="btn-conteudo">Ver conteudo </button>
-            </li>
-            <li>
-                <span>Microeconomia</span>
-                <button id="btn-prova2" class="btn-conteudo">Ver conteudo </button>
-            </li>
-            <li>
-                <span>Política Monetária e Fiscal</span>
-                <button id="btn-prova3" class="btn-conteudo">Ver conteudo </button>
-            </li>
-            <li>
-                <span>Sistema Financeiro</span>
-                <button id="btn-prova4" class="btn-conteudo">Ver conteudo </button>
-            </li>
-            <li>
-                <span>Economia Ambiental</span>
-                <button id="btn-prova5" class="btn-conteudo">Ver conteudo </button>
             </li>
         </ul>
 
@@ -481,12 +466,14 @@
         </div>
 
         
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
 
+        <div class="prova"> 
+            <h1 class="title-primary">Questionário</h1>
+            <div id="perguntas" class="prova-pergunta"></div>
+            <div id="opcoes" class="prova-opcao"></div>
+        </div>
+            
+       
 
 
 

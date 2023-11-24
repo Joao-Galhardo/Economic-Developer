@@ -1,14 +1,5 @@
 var database = require("../database/config");
 
-function investir(valorInvestimento, dtInvestimento, fkMeta) {
-    
-
-    var instrucao = `
-        INSERT INTO investimentos (valor, dtInvestimento, fkMeta ) VALUES ('${valorInvestimento}', '${dtInvestimento}', '${fkMeta}');
-    `;
-    console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
-}
 
 function listar(fkUsuario) {
     var query = `select * from metas where fkUsuario = '${fkUsuario}';`;
@@ -40,10 +31,18 @@ function editarValor(idMeta, novoValor) {
     return database.executar(instrucao)
 }
 
+function adicionarValor (idMeta, valorInvestido, dtInvestimento) {
+    var instrucao = `
+    INSERT INTO investimentos (valor, dtInvestimento, fkMeta) VALUES ('${valorInvestido}', '${dtInvestimento}', ${idMeta} );
+`;
+console.log("Executando a instrução SQL: \n" + instrucao);
+return database.executar(instrucao);
+}
+
 module.exports = {
-    investir,
     listar,
     buscarIdMeta,
     deletarMeta,
-    editarValor
+    editarValor,
+    adicionarValor
 }

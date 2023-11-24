@@ -197,3 +197,6 @@ main {
     justify-content: center;
 }
 
+#grafico1 {
+    overflow: auto;
+}

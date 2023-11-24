@@ -101,7 +101,31 @@ function deletar(req, res) {
                     res.status(500).json(erro.sqlMessage);
                 }
             );
-    }     
+    }
+    
+function adicionarValor(req,res) {
+
+    var idMeta = req.params.idMeta
+    var valorInvestido = req.body.valorInvestidoServer;
+    var dtInvestimento = req.body.dataServer;
+    // var fkUsuario = req.params.idUsuario;
+
+    dashboardModel.adicionarValor(idMeta, valorInvestido, dtInvestimento )
+    .then(
+        function (resultado) {
+            res.json(resultado);
+        }
+    ).catch(
+        function (erro) {
+            console.log(erro);
+            console.log(
+                "\nHouve um erro ao realizar o cadastro! Erro: ",
+                erro.sqlMessage
+            );
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
+}
 
 
 
@@ -109,5 +133,6 @@ module.exports = {
     investir,
     listar,
     deletar,
-    atualizarValor
+    atualizarValor,
+    adicionarValor
 }

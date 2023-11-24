@@ -38,14 +38,8 @@
         </div>
         <div class="inferior-inicio">
             <div class="espaço-grafico">
-                <h1 class="title-canva">Quanto ja consegui</h1>
-                <div class="grafico">
-                    <canvas id="myChart"></canvas>
-                </div>
-            </div>
-            <div class="espaço-grafico">
                 <h1 class="title-canva">Investimentos por mês</h1>
-                <div class="grafico">
+                <div id="grafico2" class="grafico">
                     <canvas id="myChart2"></canvas>
                 </div>
             </div>
@@ -60,28 +54,6 @@
 
     const graficoPorcentagem = document.getElementById('myChart');
 
-    new Chart(graficoPorcentagem, {
-        type: 'pie',
-        data: {
-            labels: ['Blue', 'Orange'],
-            datasets: [{
-                label: '# of Votes',
-                data: [30, 19,],
-                backgroundColor: [
-                    'rgb(242, 149, 89)',
-                    'rgb(0, 7, 45)',
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
 
     const graficoLinha = document.getElementById('myChart2');
 
@@ -111,9 +83,10 @@
 
 
     function listar(idUsuario) {
-        
+
 
         var listaMetas = document.getElementById('div_funcaoMeta');
+        var listaGrafico = document.getElementById('grafico1')
 
         fetch(`/dashboard/listar/${sessionStorage.ID_USUARIO}`, {
             method: "GET",
@@ -122,14 +95,14 @@
                 resposta.json().then((metas) => {
                     console.log(metas);
 
-                    if(metas.length == 0) {
+                    if (metas.length == 0) {
                         listaMetas.innerHTML = `Você ainda não possui nenhuma meta cadastrada, cadastre a sua primeira meta`
                     } else {
-                    listaMetas.innerHTML = "";
+                        listaMetas.innerHTML = "";
 
-                    metas.forEach((metas) => {
+                        metas.forEach((metas) => {
 
-                        listaMetas.innerHTML += `<div class="metas">
+                            listaMetas.innerHTML += `<div class="metas">
                     <h2 class="title-metas">${metas.titulo}</h1>
                         <div class="rotulos-metas">
                             <div class="descricao-metas">
@@ -151,19 +124,22 @@
                                 <label class="rotulo" style="align-self: flex-end;">Data</label>
                             </div>
                             <div class="rotulos-investimentos">
-                                <input id="valorInvestido_input">
-                                <input type="date" id="dtInvestimento_input">
+                                <input id="valorInvestido_input${metas.idMeta}">
+                                <input type="date" id="dtInvestimento_input${metas.idMeta}">
                             </div>
                         </div>
                         <button style="display: none;" id="btn_salvar${metas.idMeta}" class="btn-salvar" onclick="editar(${metas.idMeta})">Salvar</button>
                 </div>`;
-                    });
-                }}); 
+
+                        });
+                    }
+                });
             })
             .catch(function (resposta) {
                 console.log(`#ERRO: ${resposta}`);
             });
     }
+
 
     function deletar(idMeta) {
         console.log("Criar função de apagar post escolhido - ID" + idMeta);
@@ -188,8 +164,10 @@
 
     function editar(idMeta) {
 
-        var valorInvestido = Number(document.getElementById(`valorInvestido_input`).value);
+        var valorInvestido = Number(document.getElementById(`valorInvestido_input${idMeta}`).value);
+
         console.log(valorInvestido)
+        console.log()
         fetch(`/dashboard/editar/${idMeta}`, {
             method: "PUT",
             headers: {
@@ -204,6 +182,7 @@
             console.log("valor investido do usuario" + valorInvestido)
             if (resposta.ok) {
                 window.alert("Parabéns, você esta cada dia mais próximo de sua meta");
+                adicionarValor(idMeta);
                 window.location = "dashboard.html"
             } else if (resposta.status == 404) {
                 window.alert("Deu 404!");
@@ -214,5 +193,44 @@
             console.log(`#ERRO: ${resposta}`);
         });
     }
+
+
+    function adicionarValor(idMeta) {
+
+
+        var valorInvestido = Number(document.getElementById(`valorInvestido_input${idMeta}`).value);
+        var dataInvestimento = document.getElementById(`dtInvestimento_input${idMeta}`).value;
+
+        fetch(`/dashboard/adicionarValor/${sessionStorage.ID_USUARIO}/${idMeta}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                valorInvestidoServer: valorInvestido,
+                fkMeta: idMeta,
+                dataServer: dataInvestimento
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    setTimeout(() => {
+                        window.location = "dashboard.html";
+                    }, "500");
+                } else {
+                    throw "Houve um erro ao tentar inserir a meta!";
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+
+        return false;
+    }
+
+
+
 
 </script>

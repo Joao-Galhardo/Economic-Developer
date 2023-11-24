@@ -47,7 +47,7 @@ constraint fkUsuario foreign key (fkUsuario) references usuario (idUsuario)
 );
 
 create table investimentos (
-idInvestimento int,
+idInvestimento int auto_increment,
 fkMeta int,
 primary key (idInvestimento, fkMeta),
 valor decimal (10,2),
