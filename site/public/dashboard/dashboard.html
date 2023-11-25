@@ -1,108 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Perfil do Usuário</title>
 
-    <link rel="stylesheet" href="../css/stylePerfil/stylePerfil.css">
-    <link rel="stylesheet" href="../css/stylePerfil/styleDashboad.css">
+    <link rel="stylesheet" href="../css/stylePerfil/stylePerfil.css" />
+    <link rel="stylesheet" href="../css/stylePerfil/styleDashboad.css" />
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script src="../js/sessao.js"></script>
     <script src="../js/botaoInvestir.js"></script>
     <script src="../js/metaDashboard.js"></script>
+  </head>
 
-
-</head>
-
-<body onload="validarSessao(), listar()">
+  <body onload="validarSessao(), listar()">
     <header class="rodape">
-        <img class="foto" src="./imagens/fotoMF.jpg" alt="Foto do Perfil">
-        <h1 class="title" id="b_usuario"></h1>
-        <a class="botao-ancora" href="./dashboard.html">Início</a>
-        <a class="botao-ancora" href="./simulador.html">Simulador Financeiro</a>
-        <a class="botao-ancora" href="./cursos.html">Cursos</a>
-        <a class="botao-ancora" href="./metas.html">Metas Financeiras</a>
-        <a class="botao-ancora" href="./conversor.html">Conversor de Moedas</a>
-        <a class="botao-ancora" onclick="limparSessao()">Sair</a>
+      <img class="foto" src="./imagens/fotoMF.jpg" alt="Foto do Perfil" />
+      <h1 class="title" id="b_usuario"></h1>
+      <a class="botao-ancora" href="./dashboard.html">Início</a>
+      <a class="botao-ancora" href="./simulador.html">Simulador Financeiro</a>
+      <a class="botao-ancora" href="./cursos.html">Cursos</a>
+      <a class="botao-ancora" href="./metas.html">Metas Financeiras</a>
+      <a class="botao-ancora" href="./conversor.html">Conversor de Moedas</a>
+      <a class="botao-ancora" onclick="limparSessao()">Sair</a>
     </header>
     <main>
-        <div class="superior-inicio">
-            <h1 class="title-inicio">Minhas Metas</h1>
-            <div id="div_funcaoMeta" class="divisao-metas">
-
-            </div>
+      <div class="superior-inicio">
+        <h1 class="title-inicio">Minhas Metas</h1>
+        <div id="div_funcaoMeta" class="divisao-metas"></div>
+      </div>
+      <div class="inferior-inicio">
+        <div class="espaço-grafico">
+          <h1 class="title-canva">Investimentos por mês</h1>
+          <div style="display: none" id="grafico2" class="grafico">
+            <canvas id="myChart2"></canvas>
+          </div>
         </div>
-        <div class="inferior-inicio">
-            <div class="espaço-grafico">
-                <h1 class="title-canva">Investimentos por mês</h1>
-                <div id="grafico2" class="grafico">
-                    <canvas id="myChart2"></canvas>
-                </div>
-            </div>
-        </div>
+      </div>
     </main>
-</body>
-
+  </body>
 </html>
 
-
 <script>
+  const graficoLinha = document.getElementById("myChart2");
 
-    const graficoPorcentagem = document.getElementById('myChart');
+  fetch(`/dashboard/atualizarGrafico/${sessionStorage.ID_USUARIO}`, {
+    method: "GET",
+  }).then((resposta) => {
+    if (resposta.status == 200) {
+      resposta.json().then((resposta) => {
+        gerarGrafico(resposta);
+      });
+    } else {
+      console.log("Não foi encontrado nenhum projeto.");
+    }
+  });
 
+  function gerarGrafico(resposta) {
+    var listaData = [];
+    var listaTotalInvestimento = [];
 
-    const graficoLinha = document.getElementById('myChart2');
+    for (var i = 0; i < resposta.length; i++) {
+      var mes = resposta[i].mes;
+
+      if (resposta[i].mes == "01") {
+        mes = "Janeiro";
+      } else if (resposta[i].mes == "02") {
+        mes = "Fevereiro";
+      } else if (resposta[i].mes == "03") {
+        mes = "Março";
+      } else if (resposta[i].mes =="04") {
+        mes = "Abril";
+      } else if (resposta[i].mes == "05") {
+        mes = "Maio";
+      } else if (resposta[i].mes == "06") {
+        mes = "Junho";
+      } else if (resposta[i].mes == "07") {
+        mes = "Julho";
+      } else if (resposta[i].mes == "08") {
+        mes = "Agosto";
+      } else if (resposta[i].mes == "09") {
+        mes = "Setembro";
+      } else if (resposta[i].mes == "10") {
+        mes = "Outubro";
+      } else if (resposta[i].mes == "11") {
+        mes = "Novembro";
+      } else if (resposta[i].mes == "12") {
+        mes = "Dezembro";
+      } else {
+        mes = "Mês Desconhecido";
+      }
+
+      var data = mes + '/' + resposta[i].ano
+
+      var total = resposta[i].total;
+      listaData.push(data);
+      listaTotalInvestimento.push(total);
+    }
+
+    console.log(listaData);
 
     new Chart(graficoLinha, {
-        type: 'line',
-        data: {
-            labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
-            datasets: [{
-                label: 'Investimento por Mês',
-                data: [12, 19, 3, 5, 2, 3, 6, 8, 9, 10, 20, 5],
-                backgroundColor: [
-                    'rgb(15, 82, 87)'
-                ],
-                borderColor: 'rgb(15, 82, 87)',
-                borderWidth: 3
-            }]
+      type: "line",
+      data: {
+        labels: listaData,
+        datasets: [
+          {
+            label: "Investimento por Mês",
+            data: listaTotalInvestimento,
+            backgroundColor: ["rgb(15, 82, 87)"],
+            borderColor: "rgb(15, 82, 87)",
+            borderWidth: 3,
+          },
+        ],
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+          },
         },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
+      },
     });
+  }
 
+  function listar(idUsuario) {
+    var listaMetas = document.getElementById("div_funcaoMeta");
+    var listaGrafico = document.getElementById("grafico1");
 
+    fetch(`/dashboard/listar/${sessionStorage.ID_USUARIO}`, {
+      method: "GET",
+    })
+      .then(function (resposta) {
+        resposta.json().then((metas) => {
+          console.log(metas);
 
-    function listar(idUsuario) {
+          if (metas.length == 0) {
+            listaMetas.innerHTML = `Você ainda não possui nenhuma meta cadastrada, cadastre a sua primeira meta`;
+          } else {
+            listaMetas.innerHTML = "";
 
-
-        var listaMetas = document.getElementById('div_funcaoMeta');
-        var listaGrafico = document.getElementById('grafico1')
-
-        fetch(`/dashboard/listar/${sessionStorage.ID_USUARIO}`, {
-            method: "GET",
-        })
-            .then(function (resposta) {
-                resposta.json().then((metas) => {
-                    console.log(metas);
-
-                    if (metas.length == 0) {
-                        listaMetas.innerHTML = `Você ainda não possui nenhuma meta cadastrada, cadastre a sua primeira meta`
-                    } else {
-                        listaMetas.innerHTML = "";
-
-                        metas.forEach((metas) => {
-
-                            listaMetas.innerHTML += `<div class="metas">
+            metas.forEach((metas) => {
+              listaMetas.innerHTML += `<div class="metas">
                     <h2 class="title-metas">${metas.titulo}</h1>
                         <div class="rotulos-metas">
                             <div class="descricao-metas">
@@ -111,126 +152,146 @@
                             </div>
                             <div class="valores-metas">
                                 <h3>R$ <span>${metas.valorAtual}</span></h3>
-                                <h3><span>${((metas.valorAtual / metas.valorTotal) * 100).toFixed(2)}</span> %</h3>
+                                <h3><span>${(
+                                  (metas.valorAtual / metas.valorTotal) *
+                                  100
+                                ).toFixed(2)}</span> %</h3>
                             </div>
                         </div>
                         <div class="botoes-metas">
-                            <button class="btn-excluir" onclick="deletar(${metas.idMeta})">Excluir</button>
-                            <button class="btn-investir" onclick="abrirInvestir(${metas.idMeta})">Investir</button>
+                            <button class="btn-excluir" onclick="deletar(${
+                              metas.idMeta
+                            })">Excluir</button>
+                            <button class="btn-investir" onclick="abrirInvestir(${
+                              metas.idMeta
+                            })">Investir</button>
                         </div>
-                        <div style="display: none;" class="investir-metas" id="div_investir${metas.idMeta}">
+                        <div style="display: none;" class="investir-metas" id="div_investir${
+                          metas.idMeta
+                        }">
                             <div class="rotulos-investimentos">
                                 <label class="rotulo">Valor do investimento</label>
                                 <label class="rotulo" style="align-self: flex-end;">Data</label>
                             </div>
                             <div class="rotulos-investimentos">
                                 <input id="valorInvestido_input${metas.idMeta}">
-                                <input type="date" id="dtInvestimento_input${metas.idMeta}">
+                                <input type="date" id="dtInvestimento_input${
+                                  metas.idMeta
+                                }">
                             </div>
                         </div>
-                        <button style="display: none;" id="btn_salvar${metas.idMeta}" class="btn-salvar" onclick="editar(${metas.idMeta})">Salvar</button>
+                        <button style="display: none;" id="btn_salvar${
+                          metas.idMeta
+                        }" class="btn-salvar" onclick="editar(${
+                metas.idMeta
+              })">Salvar</button>
                 </div>`;
 
-                        });
-                    }
-                });
-            })
-            .catch(function (resposta) {
-                console.log(`#ERRO: ${resposta}`);
+              grafico2.style.display = "block";
             });
-    }
-
-
-    function deletar(idMeta) {
-        console.log("Criar função de apagar post escolhido - ID" + idMeta);
-        fetch(`/dashboard/deletar/${sessionStorage.ID_USUARIO}/${idMeta}`, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        }).then(function (resposta) {
-
-            if (resposta.ok) {
-                window.location = "dashboard.html"
-            } else if (resposta.status == 404) {
-                window.alert("Deu 404!");
-            } else {
-                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
-            }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
+          }
         });
-    }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+  }
 
-    function editar(idMeta) {
+  function deletar(idMeta) {
+    console.log("Criar função de apagar post escolhido - ID" + idMeta);
+    fetch(`/dashboard/deletar/${sessionStorage.ID_USUARIO}/${idMeta}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then(function (resposta) {
+        if (resposta.ok) {
+          window.location = "dashboard.html";
+        } else if (resposta.status == 404) {
+          window.alert("Deu 404!");
+        } else {
+          throw (
+            "Houve um erro ao tentar realizar a postagem! Código da resposta: " +
+            resposta.status
+          );
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+  }
 
-        var valorInvestido = Number(document.getElementById(`valorInvestido_input${idMeta}`).value);
+  function editar(idMeta) {
+    var valorInvestido = Number(
+      document.getElementById(`valorInvestido_input${idMeta}`).value
+    );
 
-        console.log(valorInvestido)
-        console.log()
-        fetch(`/dashboard/editar/${idMeta}`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                "valorInvestido": valorInvestido
+    console.log(valorInvestido);
+    console.log();
+    fetch(`/dashboard/editar/${sessionStorage.ID_USUARIO}/${idMeta}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        valorInvestido: valorInvestido,
+      }),
+    })
+      .then(function (resposta) {
+        console.log("valor investido do usuario" + valorInvestido);
+        if (resposta.ok) {
+          window.alert("Parabéns, você esta cada dia mais próximo de sua meta");
+          adicionarValor(idMeta);
+          window.location = "dashboard.html";
+        } else if (resposta.status == 404) {
+          window.alert("Deu 404!");
+        } else {
+          throw (
+            "Houve um erro ao tentar realizar a postagem! Código da resposta: " +
+            resposta.status
+          );
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+  }
 
-            })
+  function adicionarValor(idMeta) {
+    var valorInvestido = Number(
+      document.getElementById(`valorInvestido_input${idMeta}`).value
+    );
+    var dataInvestimento = document.getElementById(
+      `dtInvestimento_input${idMeta}`
+    ).value;
 
-        }).then(function (resposta) {
-            console.log("valor investido do usuario" + valorInvestido)
-            if (resposta.ok) {
-                window.alert("Parabéns, você esta cada dia mais próximo de sua meta");
-                adicionarValor(idMeta);
-                window.location = "dashboard.html"
-            } else if (resposta.status == 404) {
-                window.alert("Deu 404!");
-            } else {
-                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
-            }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-        });
-    }
+    fetch(`/dashboard/adicionarValor/${sessionStorage.ID_USUARIO}/${idMeta}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        valorInvestidoServer: valorInvestido,
+        fkMeta: idMeta,
+        dataServer: dataInvestimento,
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
 
+        if (resposta.ok) {
+          setTimeout(() => {
+            window.location = "dashboard.html";
+          }, "500");
+        } else {
+          throw "Houve um erro ao tentar inserir a meta!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
 
-    function adicionarValor(idMeta) {
-
-
-        var valorInvestido = Number(document.getElementById(`valorInvestido_input${idMeta}`).value);
-        var dataInvestimento = document.getElementById(`dtInvestimento_input${idMeta}`).value;
-
-        fetch(`/dashboard/adicionarValor/${sessionStorage.ID_USUARIO}/${idMeta}`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                valorInvestidoServer: valorInvestido,
-                fkMeta: idMeta,
-                dataServer: dataInvestimento
-            }),
-        })
-            .then(function (resposta) {
-                console.log("resposta: ", resposta);
-
-                if (resposta.ok) {
-                    setTimeout(() => {
-                        window.location = "dashboard.html";
-                    }, "500");
-                } else {
-                    throw "Houve um erro ao tentar inserir a meta!";
-                }
-            })
-            .catch(function (resposta) {
-                console.log(`#ERRO: ${resposta}`);
-            });
-
-        return false;
-    }
-
-
-
-
+    return false;
+  }
 </script>

@@ -85,10 +85,11 @@ function deletar(req, res) {
     function atualizarValor(req, res) {
         var novoValor = req.body.valorInvestido
         var idMeta = req.params.idMeta
+        var idUsuario = req.params.idUsuario
 
         console.log("valor do investimento " + novoValor)
 
-        dashboardModel.editarValor(idMeta, novoValor)
+        dashboardModel.editarValor(idMeta, novoValor, idUsuario)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -108,9 +109,9 @@ function adicionarValor(req,res) {
     var idMeta = req.params.idMeta
     var valorInvestido = req.body.valorInvestidoServer;
     var dtInvestimento = req.body.dataServer;
-    // var fkUsuario = req.params.idUsuario;
+    var fkUsuario = req.params.idUsuario;
 
-    dashboardModel.adicionarValor(idMeta, valorInvestido, dtInvestimento )
+    dashboardModel.adicionarValor(idMeta, valorInvestido, dtInvestimento, fkUsuario )
     .then(
         function (resultado) {
             res.json(resultado);
@@ -127,6 +128,27 @@ function adicionarValor(req,res) {
     );
 }
 
+function atualizarGrafico(req, res) {
+    var idUsuario = req.params.idUsuario
+
+    dashboardModel.atualizarGrafico(idUsuario)
+    .then(
+        function (resultado) {
+            res.json(resultado);
+        }
+    ).catch(
+        function (erro) {
+            console.log(erro);
+            console.log(
+                "\nHouve um erro ao ao tentar atualizar o grafico",
+                erro.sqlMessage
+            );
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
+
+
+}
 
 
 module.exports = {
@@ -134,5 +156,6 @@ module.exports = {
     listar,
     deletar,
     atualizarValor,
-    adicionarValor
+    adicionarValor,
+    atualizarGrafico
 }

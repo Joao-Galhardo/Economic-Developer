@@ -31,12 +31,20 @@ function editarValor(idMeta, novoValor) {
     return database.executar(instrucao)
 }
 
-function adicionarValor (idMeta, valorInvestido, dtInvestimento) {
+function adicionarValor (idMeta, valorInvestido, dtInvestimento, idUsuario) {
     var instrucao = `
-    INSERT INTO investimentos (valor, dtInvestimento, fkMeta) VALUES ('${valorInvestido}', '${dtInvestimento}', ${idMeta} );
+    INSERT INTO investimentos (valor, dtInvestimento, fkMeta, fkUsuarioInvestimento) VALUES ('${valorInvestido}', '${dtInvestimento}', ${idMeta}, ${idUsuario} );
 `;
 console.log("Executando a instrução SQL: \n" + instrucao);
 return database.executar(instrucao);
+}
+
+function atualizarGrafico (idUsuario) {
+    var instrucao = `
+    SELECT YEAR(dtInvestimento) AS ano, MONTH(dtInvestimento) AS mes, sum(valor) AS total FROM investimentos where fkUsuarioInvestimento = ${idUsuario} GROUP BY mes,ano;`
+
+    console.log(`Executando a instrução SQL: \n + ${instrucao}`)
+    return database.executar(instrucao)
 }
 
 module.exports = {
@@ -44,5 +52,6 @@ module.exports = {
     buscarIdMeta,
     deletarMeta,
     editarValor,
-    adicionarValor
+    adicionarValor,
+    atualizarGrafico
 }

@@ -30,8 +30,8 @@
         <img src="./imagens/Logos/Login sem fundo.png" alt="Logo" />
 
         <div class="botoes-cabeçalho">
-          <a href="./cadastro.html" class="botao-cabeçalho">Login</a>
-          <a href="./cadastro.html" class="botao-cabeçalho">Cadastre-se</a>
+          <a href="./cadastro.html?cadastro=false" class="botao-cabeçalho">Login</a>
+          <a href="./cadastro.html?cadastro=true" class="botao-cabeçalho">Cadastre-se</a>
         </div>
       </nav>
     </header>
@@ -57,7 +57,7 @@
             <img src="./imagens/Fundos/imgPorquinho.jpg" alt="">
             <a
             style="text-decoration: none"
-            href="/cadastro.html"
+            href="/cadastro.html?cadastro=true"
             class="botao-carrossel"
             >Venha fazer parte</a> 
           </div>
@@ -131,16 +131,27 @@
 
       <section class="joguinho">
         <img
-          id="Veigar"
+          id="veigar"
           class="joguinho-veigar"
           src="./imagens/Veigar duvida.gif"
           alt="Veigar Perguntando"
         />
-        <button class="joguinho-play">
+        <button onclick="jogar()" class="joguinho-play" id="botaoJoguinho">
           <p class="efeito-glitch">Play</p>
         </button>
 
-
+        <div class="div-quiz">
+          <div class="perguntas-title">
+          <h1>Desafio você a testar seus conhecimentos</h1>
+        </div>
+          <div class="perguntas-quiz">
+            <p>O que significa a sigla PIB?</p>
+          <button>Preço interno barata</button>
+          <button>Produto Interno Bruto</button>
+          <button>Preço Interno Bruto</button>
+          </div>
+          
+        </div>
       </section>
 
       <section class="composiçao">
@@ -250,17 +261,7 @@
             </a>
           </div>
 
-          <div class="contato-email">
-            <h1>Fique por dentro</h1>
-            <div class="contato-ib">
-              <input
-                class="input-email"
-                type="text"
-                placeholder="Endereço de e-mail"
-              />
-              <button class="botao-email">Inscreva-se</button>
-            </div>
-          </div>
+          
         </div>
         <div class="endereço">
           <h1>

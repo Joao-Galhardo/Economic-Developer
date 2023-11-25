@@ -58,6 +58,7 @@
     background-color: #00072D;
     display: flex;
     align-items: start;
+    border-top: #fff 2px solid;
 }
 
 .contato-redes {

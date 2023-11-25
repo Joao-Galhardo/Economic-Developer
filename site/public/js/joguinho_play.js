@@ -1,3 +1,5 @@
 function jogar () {
-    joguinhoVeigar.style.display = "block"
+    veigar.style.display = veigar.style.display === 'flex' ? 'none' : 'flex'
+    botaoJoguinho.style.display = 'none'
+    
 }
