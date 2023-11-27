@@ -140,16 +140,17 @@
           <p class="efeito-glitch">Play</p>
         </button>
 
-        <div class="div-quiz">
+        <div style="display: none;" class="div-quiz" id="containerPerguntas">
           <div class="perguntas-title">
           <h1>Desafio você a testar seus conhecimentos</h1>
         </div>
-          <div class="perguntas-quiz">
-            <p>O que significa a sigla PIB?</p>
-          <button>Preço interno barata</button>
-          <button>Produto Interno Bruto</button>
-          <button>Preço Interno Bruto</button>
-          </div>
+          <div  class="perguntas-quiz" id="quiz">
+            <p id="pergunta">A Pergunta vai aqui</p>
+            <div class="botoes" id="btn-answer">
+              <button onclick="selecionarResposta(0)" class="btn">Primeira Alternativa</button>
+              <button onclick="selecionarResposta(1)" class="btn">Segunda Alternativa</button>
+              <button onclick="selecionarResposta(2)" class="btn">Terceira Alternativa</button>
+            </div>
           
         </div>
       </section>
@@ -271,11 +272,22 @@
       </footer>
     </main>
 
-    <a href="./siteInstitucional/login.html"></a>
+    
 
     <script src="/js/carrossel.js"></script>
-    <script src="/js/joguinho_play.js"></script>
-    <script src="./js/script.js" type="module"></script>
+    <script src="./js/joguinho_play.js"></script>
+    <script>
+      
+    function jogar () {
+    veigar.style.display = 'block'
+    botaoJoguinho.style.display = 'none'
+    
+    containerPerguntas.style.display = 'flex'
+    showQuestion();
+}
+
+    </script>
+   
   </body>
 </html>
 
