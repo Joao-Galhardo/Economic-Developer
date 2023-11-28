@@ -41,7 +41,7 @@ return database.executar(instrucao);
 
 function atualizarGrafico (idUsuario) {
     var instrucao = `
-    SELECT YEAR(dtInvestimento) AS ano, MONTH(dtInvestimento) AS mes, SUM(valor) AS total FROM investimentos WHERE fkUsuarioInvestimento = 1 GROUP BY ano, mes ORDER BY ano ASC, mes ASC;`
+    SELECT YEAR(dtInvestimento) AS ano, MONTH(dtInvestimento) AS mes, SUM(valor) AS total FROM investimentos WHERE fkUsuarioInvestimento = ${idUsuario} GROUP BY ano, mes ORDER BY ano ASC, mes ASC;`
 
     console.log(`Executando a instrução SQL: \n + ${instrucao}`)
     return database.executar(instrucao)

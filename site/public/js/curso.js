@@ -1,5 +1,6 @@
+var conteudoMateria = document.getElementsByClassName('conteudoMateria');
+
 function mostrarInfo(id) {
-  var conteudoMateria = document.getElementsByClassName('conteudoMateria');
   for (var i = 0; i < conteudoMateria.length; i++) {
     conteudoMateria[i].style.display = 'none';
   }
@@ -8,8 +9,20 @@ function mostrarInfo(id) {
   conteudo.style.display = conteudo.style.display === 'none' ? 'flex' : 'none';
 
   conteudo.scrollIntoView({ behavior: 'smooth' });
-  // método do JavaScript que é usado para rolar a página até que um determinado elemento seja visível na janela de visualização.
 }
+
+function mostrarProva() {
+  for (var i = 0; i < conteudoMateria.length; i++) {
+    conteudoMateria[i].style.display = 'none';
+  }
+
+  conteudoProva.style.display = conteudoProva.style.display === 'none' ? 'flex' : 'none';
+
+  conteudoProva.scrollIntoView({behavior: 'smooth'})
+}
+
+
+
   
   // Aqui eu defino um evento de click para os botões, e esses botões entregam o ID para função
   

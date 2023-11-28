@@ -11,10 +11,10 @@
     <script src="../js/sessao.js"></script>
   </head>
 
-  <body onload="validarSessao(), aparecerQuestao()">
+  <body onload="validarSessao()">
     <header style="position: fixed" class="rodape">
       <img class="foto" src="./imagens/fotoMF.jpg" alt="Foto do Perfil" />
-      <h1 class="title" id="b_usuario">Nome da pessoa</h1>
+      <h1 class="title" id="b_usuario"></h1>
       <a class="botao-ancora" href="./dashboard.html">Início</a>
       <a class="botao-ancora" href="./simulador.html">Simulador Financeiro</a>
       <a class="botao-ancora" href="./cursos.html">Cursos</a>
@@ -82,7 +82,7 @@
         <h1>Teste seu conhecimento</h1>
         <li>
           <span>Prova</span>
-          <button id="btn-prova1" class="btn-conteudo">Ver conteudo</button>
+          <button id="btn-prova1" class="btn-conteudo" onclick="mostrarProva()">Ver conteudo</button>
         </li>
       </ul>
 
@@ -576,21 +576,25 @@
         </div>
       </div>
 
-      <div class="prova">
+      <div style="display: none;" class="prova" id="conteudoProva">
         <h1 class="title-primary">Questionário</h1>
         <div  class="prova-pergunta">
-            <p id="perguntas">Aqui vai a pergunta</p>
+            <p class="pergunta" id="perguntas">Aqui vai a pergunta</p>
         </div>
         <div id="opcoes" class="prova-opcao">
-          <button onclick="selecionarResposta(0)" class="btn">
+          <button onclick="selecionarResposta(0)" class="btn-curso">
             Primeira Alternativa
           </button>
-          <button onclick="selecionarResposta(1)" class="btn">
+          <button onclick="selecionarResposta(1)" class="btn-curso">
             Segunda Alternativa
           </button>
-          <button onclick="selecionarResposta(2)" class="btn">
+          <button onclick="selecionarResposta(2)" class="btn-curso">
             Terceira Alternativa
           </button>
+        </div>
+        <div>
+          <h1 class="title-primary">Resultado</h1>
+          <p id="resultado"></p>
         </div>
       </div>
     </main>

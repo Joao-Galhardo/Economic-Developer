@@ -38,13 +38,13 @@ const listaPeguntaRespostas = [
     ]
 },
 {
-    pergunta: "Como um aumento na oferta de um bem afeta o mercado?",
+    pergunta: "O que acontece no mercado quando há uma diminuição na demanda por um produto?",
     opcoes: [
-        {texto: "O preço e a quantidade vendida aumentam", resultado: false},
-        {texto: "O preço aumenta e a quantidade vendida diminui", resultado: false},
-        {texto: "O preço diminui e a quantidade vendida aumenta", resultado: true}
+    {texto: "O preço e a quantidade vendida aumentam", resultado: false},
+    {texto: "O preço aumenta e a quantidade vendida diminui", resultado: true},
+    {texto: "O preço diminui e a quantidade vendida aumenta", resultado: false}
     ]
-},
+    },
 {
     pergunta: "O que caracteriza um bem inferior em termos econômicos?",
     opcoes: [
@@ -162,7 +162,7 @@ function selecionarResposta(index) {
     if (currentQuestionIndex < listaPeguntaRespostas.length) {
         showQuestion();
     } else {
-        // Aqui você pode exibir a pontuação final ou realizar outra ação
+        if (score >= 10)
         alert('Pontuação final: ' + score + ' de ' + listaPeguntaRespostas.length);
     }
 }
