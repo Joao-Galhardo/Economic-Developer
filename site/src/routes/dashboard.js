@@ -22,6 +22,10 @@ router.post("/adicionarValor/:idUsuario/:idMeta", function (req, res) {
 
 router.get("/atualizarGrafico/:idUsuario", function (req,res) {
     dashboardController.atualizarGrafico(req,res);
-})
+});
+
+router.get("/listarCertificado/:idUsuario", function(req, res) {
+    dashboardController.listarCertificado(req,res);
+});
 
 module.exports = router;

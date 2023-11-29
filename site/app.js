@@ -10,11 +10,9 @@ var app = express();
 
 var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
-var avisosRouter = require("./src/routes/avisos");
-var medidasRouter = require("./src/routes/medidas");
-var empresasRouter = require("./src/routes/empresas");
 var metasRouter = require("./src/routes/metas");
 var dashboardRouter = require("./src/routes/dashboard")
+var cursosRouter = require("./src/routes/cursos")
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -24,11 +22,9 @@ app.use(cors());
 
 app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
-app.use("/avisos", avisosRouter);
-app.use("/medidas", medidasRouter);
-app.use("/empresas", empresasRouter);
 app.use("/metas", metasRouter)
 app.use("/dashboard", dashboardRouter)
+app.use("/cursos", cursosRouter)
 
 app.listen(PORTA, function () {
     console.log(`Servidor do seu site já está rodando! Acesse o caminho a seguir para visualizar: http://localhost:${PORTA} \n

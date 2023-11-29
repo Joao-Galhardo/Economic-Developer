@@ -27,7 +27,7 @@ main {
 
 .superior-inicio {
     width: 100%;
-    height: 50%;
+    height: 60%;
     display: flex;
     flex-direction: column;
     /* overflow-x: auto; */
@@ -199,4 +199,52 @@ main {
 
 #grafico1 {
     overflow: auto;
+}
+
+.title-primeira-meta{
+    font-size: 30px;
+    margin-bottom: 15%;
+    margin-top: 10%;
+}
+
+.ancora-meta {
+    text-decoration: none;
+    background-color: white;
+    color: #00072D;
+    padding: 20px;
+    border: #00072D 2px solid;
+    border-radius: 3rem;
+    font-size: 20px;
+    margin-top: 5%;
+    
+}
+
+.ancora-meta:hover {
+    background-color: #00072D;
+    color: white;
+    padding: 25px;
+}
+
+#certificadoUsuario {
+    display: flex;
+    flex-direction: column;
+}
+
+.ancora-certificado{
+    text-decoration: none;
+    background-color: white;
+    color: #00072D;
+    border: #00072D 2px solid;
+    width: 300px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3rem;
+    font-size: 32px;
+}
+
+.ancora-certificado:hover {
+    background-color: #00072D;
+    color: white;
 }

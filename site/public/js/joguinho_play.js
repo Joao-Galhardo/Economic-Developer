@@ -52,17 +52,27 @@ function selecionarResposta(index) {
     if (selectedAnswer.resultado) {
         alert('Resposta correta!');
         score++
-    } else {
-        alert('Resposta incorreta. A resposta correta é: ' + currentQuestion.opcoes.find(opcao => opcao.resultado).texto);
-    }
+    } 
 
     currentQuestionIndex++;
 
     if (currentQuestionIndex < questions.length) {
         showQuestion();
     } else {
-        alert('Quiz concluído! Parabéns!' + score);
+        var mensagem = "";
+
+        if (score == 3) {
+            mensagem = `Parece que você ja conhece bastante sobre economia, mas que tal relembrar alguns assunto? 
+        Venha fazer parte da Economic Developer`
+        } else {
+            mensagem = `Você ainda tem coisas a apende em economia, que tal apender conosco ? 
+    Venha fazer parte da Economic Developer`}
+
+        alert(`Quiz concluído! 
+        Seu resultado foi  ${score} de 3 peguntas 
+        ${mensagem}`);
         resetQuiz();
+        score = 0;
     }
 }
 

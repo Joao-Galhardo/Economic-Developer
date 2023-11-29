@@ -126,3 +126,33 @@ font-size: 24px;
 .prova-opcao button:hover {
     height: 25%;
 }
+
+.descricao-resultado {
+    font-size: 30px;
+    text-align: center;
+}
+
+.resultado {
+    display: flex;
+    flex-direction: column;
+    height: 800px;
+    align-items: center;
+    justify-content: center;
+}
+
+.ancora-certificado {
+    text-decoration: none;
+    background-color: white;
+    color: #00072D;
+    padding: 20px;
+    border: #00072D 2px solid;
+    border-radius: 3rem;
+    font-size: 20px;
+    margin-top: 5%;
+}
+
+.ancora-certificado:hover {
+    background-color: #00072D;
+    color: white;
+    padding: 25px;
+}

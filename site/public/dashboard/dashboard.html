@@ -1,46 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Perfil do Usuário</title>
 
-    <link rel="stylesheet" href="../css/stylePerfil/stylePerfil.css" />
-    <link rel="stylesheet" href="../css/stylePerfil/styleDashboad.css" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Perfil do Usuário</title>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="../css/stylePerfil/stylePerfil.css" />
+  <link rel="stylesheet" href="../css/stylePerfil/styleDashboad.css" />
 
-    <script src="../js/sessao.js"></script>
-    <script src="../js/botaoInvestir.js"></script>
-    <script src="../js/metaDashboard.js"></script>
-  </head>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+ 
 
-  <body onload="validarSessao(), listar()">
-    <header class="rodape">
-      <img class="foto" src="./imagens/fotoMF.jpg" alt="Foto do Perfil" />
-      <h1 class="title" id="b_usuario"></h1>
-      <a class="botao-ancora" href="./dashboard.html">Início</a>
-      <a class="botao-ancora" href="./simulador.html">Simulador Financeiro</a>
-      <a class="botao-ancora" href="./cursos.html">Cursos</a>
-      <a class="botao-ancora" href="./metas.html">Metas Financeiras</a>
-      <a class="botao-ancora" href="./conversor.html">Conversor de Moedas</a>
-      <a class="botao-ancora" onclick="limparSessao()">Sair</a>
-    </header>
-    <main>
-      <div class="superior-inicio">
-        <h1 class="title-inicio">Minhas Metas</h1>
-        <div id="div_funcaoMeta" class="divisao-metas"></div>
+  <script src="../js/sessao.js"></script>
+  <script src="../js/botaoInvestir.js"></script>
+
+</head>
+
+<body onload="validarSessao(), listar(),listarCertificado()">
+  <header class="rodape">
+    <img class="foto" src="../imagens/fotoMF.jpg" alt="Foto do Perfil" />
+    <h1 class="title" id="b_usuario"></h1>
+    <a class="botao-ancora" href="./dashboard.html">Início</a>
+    <a class="botao-ancora" href="./simulador.html">Simulador Financeiro</a>
+    <a class="botao-ancora" href="./cursos.html">Cursos</a>
+    <a class="botao-ancora" href="./metas.html">Metas Financeiras</a>
+    <a class="botao-ancora" href="./conversor.html">Conversor de Moedas</a>
+    <a class="botao-ancora" onclick="limparSessao()">Sair</a>
+  </header>
+  <main>
+    <div class="superior-inicio">
+      <h1 class="title-inicio">Minhas Metas</h1>
+      <div id="div_funcaoMeta" class="divisao-metas">
+        <div>
+          <h1 class="title-primeira-meta">Cadastre a sua primeira meta financeira</h1>
+          <a class="ancora-meta" href="./metas.html">Cadastrar</a>
+        </div>
+
       </div>
-      <div class="inferior-inicio">
-        <div class="espaço-grafico">
-          <h1 class="title-canva">Investimentos por mês</h1>
-          <div style="display: none" id="grafico2" class="grafico">
-            <canvas id="myChart2"></canvas>
-          </div>
+    </div>
+    <div class="inferior-inicio">
+      <div class="espaço-grafico">
+        <h1 class="title-canva">Investimento por mês</h1>
+        <div style="display: none" id="grafico2" class="grafico">
+          <canvas id="myChart2"></canvas>
         </div>
       </div>
-    </main>
-  </body>
+      <div id="certificadoUsuario">
+        <h1>Meu Certificado</h1>
+
+
+      </div>
+    </div>
+  </main>
+</body>
+
 </html>
 
 <script>
@@ -71,7 +85,7 @@
         mes = "Fevereiro";
       } else if (resposta[i].mes == "03") {
         mes = "Março";
-      } else if (resposta[i].mes =="04") {
+      } else if (resposta[i].mes == "04") {
         mes = "Abril";
       } else if (resposta[i].mes == "05") {
         mes = "Maio";
@@ -147,50 +161,69 @@
                     <h2 class="title-metas">${metas.titulo}</h1>
                         <div class="rotulos-metas">
                             <div class="descricao-metas">
+                              <h3 class="alcançado"> Valor da Meta </h3>
                                 <h3 class="alcançado">Valor Atual</h3>
                                 <h3 class="alcançado">% Alcançada</h3>
                             </div>
                             <div class="valores-metas">
+                                <h3> R$ <span>${metas.valorTotal}</span></h3>
                                 <h3>R$ <span>${metas.valorAtual}</span></h3>
                                 <h3><span>${(
-                                  (metas.valorAtual / metas.valorTotal) *
-                                  100
-                                ).toFixed(2)}</span> %</h3>
+                  (metas.valorAtual / metas.valorTotal) *
+                  100
+                ).toFixed(2)}</span> %</h3>
                             </div>
                         </div>
                         <div class="botoes-metas">
-                            <button class="btn-excluir" onclick="deletar(${
-                              metas.idMeta
-                            })">Excluir</button>
-                            <button class="btn-investir" onclick="abrirInvestir(${
-                              metas.idMeta
-                            })">Investir</button>
+                            <button class="btn-excluir" onclick="deletar(${metas.idMeta
+                })">Excluir</button>
+                            <button class="btn-investir" onclick="abrirInvestir(${metas.idMeta
+                })">Investir</button>
                         </div>
-                        <div style="display: none;" class="investir-metas" id="div_investir${
-                          metas.idMeta
-                        }">
+                        <div style="display: none;" class="investir-metas" id="div_investir${metas.idMeta
+                }">
                             <div class="rotulos-investimentos">
                                 <label class="rotulo">Valor do investimento</label>
                                 <label class="rotulo" style="align-self: flex-end;">Data</label>
                             </div>
                             <div class="rotulos-investimentos">
                                 <input id="valorInvestido_input${metas.idMeta}">
-                                <input type="date" id="dtInvestimento_input${
-                                  metas.idMeta
-                                }">
+                                <input type="date" id="dtInvestimento_input${metas.idMeta
+                }">
                             </div>
                         </div>
-                        <button style="display: none;" id="btn_salvar${
-                          metas.idMeta
-                        }" class="btn-salvar" onclick="editar(${
-                metas.idMeta
-              })">Salvar</button>
+                        <button style="display: none;" id="btn_salvar${metas.idMeta
+                }" class="btn-salvar" onclick="editar(${metas.idMeta
+                })">Salvar</button>
                 </div>`;
 
               grafico2.style.display = "block";
             });
           }
         });
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+  }
+
+  function listarCertificado(idUsuario) {
+
+    var meuCertificado = document.getElementById('certificadoUsuario')
+
+    fetch(`/dashboard/listarCertificado/${sessionStorage.ID_USUARIO}`, {
+      method: 'GET',
+    })
+      .then(function (resposta) {
+        resposta.json().then((certificado) => {
+          console.log(certificado);
+
+
+          meuCertificado.innerHTML += `
+        <a target="_blank" class="ancora-certificado" href="../imagens/Certificado.pdf">Certificado</a>`
+
+
+        })
       })
       .catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
@@ -241,9 +274,9 @@
       .then(function (resposta) {
         console.log("valor investido do usuario" + valorInvestido);
         if (resposta.ok) {
-          window.alert("Parabéns, você esta cada dia mais próximo de sua meta");
-          adicionarValor(idMeta);
-          window.location = "dashboard.html";
+          window.alert('Parabéns, você está cada dia mais próximo de alcançar a sua meta!!')
+            window.location = "dashboard.html";
+            adicionarValor(idMeta);
         } else if (resposta.status == 404) {
           window.alert("Deu 404!");
         } else {
@@ -294,4 +327,8 @@
 
     return false;
   }
+
+
+
+
 </script>

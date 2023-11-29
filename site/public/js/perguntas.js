@@ -80,9 +80,9 @@ const listaPeguntaRespostas = [
 {
     pergunta: "Em termos macroeconômicos, o que é a política fiscal?",
     opcoes: [
-        {texto: "Mercado onde são negociados bens de consumo", resultado: false},
-        {texto: "Mercado onde são negociados títulos e valores mobiliários de longo prazo", resultado: true},
-        {texto: "Mercado onde são realizadas transações de câmbio", resultado: false}
+        {texto: "Autoridades monetárias sobre a quantidade de moeda em circulação", resultado: false},
+        {texto: "A política fiscal abrange as decisões do governo relacionadas a gastos, impostos e endividamento para estabilizar a economia.", resultado: true},
+        {texto: " Orientações ao dispor do Estado destinadas a equilibrar o funcionamento da economia através de alterações das taxas de câmbio", resultado: false}
     ]
 },
 {
@@ -152,6 +152,10 @@ function showQuestion() {
 
 function selecionarResposta(index) {
     const currentQuestion = listaPeguntaRespostas[currentQuestionIndex];
+    const conteudoProva = document.getElementById('conteudoProva');
+    const resultado = document.getElementById('resultado');
+
+    
 
     if (currentQuestion.opcoes[index].resultado) {
         score++;
@@ -162,9 +166,48 @@ function selecionarResposta(index) {
     if (currentQuestionIndex < listaPeguntaRespostas.length) {
         showQuestion();
     } else {
-        if (score >= 10)
-        alert('Pontuação final: ' + score + ' de ' + listaPeguntaRespostas.length);
+        conteudoProva.style.display = 'none'
+        resultado.style.display = 'flex'
+
+        resultado.scrollIntoView({behavior: 'smooth'})
+
+       descricaoResultado.innerHTML = `Voce acertou um total de ${score} questões <br>`
+        if (score >= 10) {
+           descricaoResultado.innerHTML += `Parabéns, voce foi aprovado, aqui esta o seu certificado <br>
+            <a class="ancora-certificado" href="../imagens/Certificado.pdf">Certificado</a>`
+
+            inserirCertificado();
+        } else {
+           descricaoResultado.innerHTML += "Infelizmente, você não foi aprovado, que tal estudar mais um pouco e tentar novamente mais tarde?"
+        }
     }
+};
+
+function inserirCertificado() {
+    
+    console.log("Cetificado adicionado")
+
+  fetch(`/cursos/inserirCertificado/${sessionStorage.ID_USUARIO}/`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    
+  })
+    .then(function (resposta) {
+      console.log("resposta: ", resposta);
+
+      if (resposta.ok) {
+        
+      } else {
+        throw "Houve um erro ao tentar inserir a meta!";
+      }
+    })
+    .catch(function (resposta) {
+      console.log(`#ERRO: ${resposta}`);
+    });
+
+  return false;
 }
 
 // Iniciar o questionário
