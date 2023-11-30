@@ -122,9 +122,9 @@
 
       <div style="display: none;" class="div-quiz" id="containerPerguntas">
         <div class="perguntas-title">
-          <h1>Desafio você a testar seus conhecimentos</h1>
+          <h1 id="quizTitle" >Desafio você a testar seus conhecimentos</h1>
         </div>
-        <div class="perguntas-quiz" id="quiz">
+        <div  class="perguntas-quiz" id="quiz">
           
           <p id="pergunta">A Pergunta vai aqui</p>
           <div class="botoes" id="btn-answer">
@@ -133,6 +133,20 @@
             <button onclick="selecionarResposta(2)" class="btn">Terceira Alternativa</button>
           </div>
 
+        </div>
+
+        <div id="conviteCadastro" class="convite-cadastro">
+          <h1>Resultado</h1>
+          <p id="resultado">
+           
+          </p> <br>
+          <div class="container-img-btn">
+          <img style="height: 200px; width: 200px;" src="./imagens/VeigarClique.gif" alt="">
+          <div class="container-btn">
+          <a href="./cadastro.html?cadastro=true" class="btn-cadastro">Cadastrar-se</a>
+          <button onclick="resetQuiz()" class="btn-tentar">Tentar novamente</button>
+        </div>
+        </div>
         </div>
       
     </section>

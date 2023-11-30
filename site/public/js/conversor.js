@@ -1,6 +1,6 @@
 var resultado;
 
-//  Trecho que faz a requisição da API 
+
 
 $.ajax({
   type: "GET",
@@ -14,11 +14,6 @@ $.ajax({
   }
 });
 
-//
-
-// Obtem o valor da moeda através do querySelector utilizando o #id e faz a verificação se os dois parametros foram escrito
-// Se a taxa de câmbio é válida, realiza o cálculo da conversão para reais, formata os valores e exibe o resultado no elemento com o id "saida".
-// Chama a função getHorarioAtualizacao para exibir a data e hora da última atualização das taxas.
 
 function converter() {
   var numeroDigitado = document.querySelector("#entrada").value;

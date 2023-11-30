@@ -21,10 +21,6 @@ function mostrarProva() {
   conteudoProva.scrollIntoView({behavior: 'smooth'})
 }
 
-
-
-  
-  // Aqui eu defino um evento de click para os botões, e esses botões entregam o ID para função
   
   document.getElementById('btn-conteudo1').addEventListener('click', function() {
             mostrarInfo('conteudo1');

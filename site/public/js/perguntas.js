@@ -210,5 +210,5 @@ function inserirCertificado() {
   return false;
 }
 
-// Iniciar o questionário
+
 showQuestion();

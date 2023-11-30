@@ -119,3 +119,65 @@
     text-align: center;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
+
+.convite-cadastro {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: space-evenly;
+height: 100%;
+width: 100%;
+}
+
+.convite-cadastro h1 {
+    font-size: 40px;
+}
+
+.convite-cadastro p{
+    font-size: 28px;
+    text-align: justify;
+    padding: 5%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.container-img-btn {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.container-btn {
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.btn-cadastro {
+    text-decoration: none;
+    font-size: 30px;
+    padding: 10px;
+    background-color: #00072D;
+    color: white;
+    border-radius: 3rem;
+    border: 2px solid ;
+    width: 250px;
+    text-align: center;
+}
+
+
+.btn-tentar {
+    font-size: 18px;
+    width: 200px;
+    height: 35px;
+    background-color: #A8D0D8;
+    border-radius: 3rem;
+
+}
+
+#conviteCadastro {
+    display: none;
+}

@@ -48,9 +48,10 @@ function showQuestion() {
 function selecionarResposta(index) {
     const currentQuestion = questions[currentQuestionIndex];
     const selectedAnswer = currentQuestion.opcoes[index];
+    const conviteCadastro = document.getElementById('conviteCadastro')
 
     if (selectedAnswer.resultado) {
-        alert('Resposta correta!');
+        
         score++
     } 
 
@@ -59,25 +60,34 @@ function selecionarResposta(index) {
     if (currentQuestionIndex < questions.length) {
         showQuestion();
     } else {
+
+        conviteCadastro.style.display = 'flex'
+        quiz.style.display = 'none'
+        quizTitle.style.display = 'none'
+
         var mensagem = "";
 
         if (score == 3) {
-            mensagem = `Parece que você ja conhece bastante sobre economia, mas que tal relembrar alguns assunto? 
+            mensagem = `Parece que você ja conhece bastante sobre economia, mas que tal relembrar alguns assuntos? 
         Venha fazer parte da Economic Developer`
         } else {
-            mensagem = `Você ainda tem coisas a apende em economia, que tal apender conosco ? 
+            mensagem = `Você ainda tem coisas a aprender em economia, que tal aprender conosco ? 
     Venha fazer parte da Economic Developer`}
 
-        alert(`Quiz concluído! 
-        Seu resultado foi  ${score} de 3 peguntas 
-        ${mensagem}`);
-        resetQuiz();
-        score = 0;
+        
+    resultado.innerHTML += `Você acertou ${score} de 3 questões <br>
+    ${mensagem}`
+
     }
 }
 
 function resetQuiz() {
+    resultado.innerHTML = ""
+    score = 0;
     currentQuestionIndex = 0;
+    conviteCadastro.style.display = 'none'
+        quiz.style.display = 'flex'
+        quizTitle.style.display = 'flex'
     showQuestion();
 }
 
@@ -85,7 +95,6 @@ function resetQuiz() {
 
 
 
-var pontuacao = 0;
 
 
 

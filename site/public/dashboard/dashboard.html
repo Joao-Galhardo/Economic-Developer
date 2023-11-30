@@ -19,7 +19,7 @@
 
 <body onload="validarSessao(), listar(),listarCertificado()">
   <header class="rodape">
-    <img class="foto" src="../imagens/fotoMF.jpg" alt="Foto do Perfil" />
+    <img class="foto" src="../imagens/Logos/Login sem fundo.png" alt="Foto do Perfil" />
     <h1 class="title" id="b_usuario"></h1>
     <a class="botao-ancora" href="./dashboard.html">Início</a>
     <a class="botao-ancora" href="./simulador.html">Simulador Financeiro</a>
@@ -48,10 +48,14 @@
       </div>
       <div id="certificadoUsuario">
         <h1>Meu Certificado</h1>
-
-
       </div>
     </div>
+
+    <div id="confirmacao" class="alerta-personalizado">
+      <img style="height: 150px;" src="../imagens/confirmacao.gif" alt="">
+      <h1>Parabéns, você está cada dia mais próximo de alcançar a sua meta!!</h1>
+    </div>
+
   </main>
 </body>
 
@@ -241,6 +245,7 @@
       .then(function (resposta) {
         if (resposta.ok) {
           window.location = "dashboard.html";
+          
         } else if (resposta.status == 404) {
           window.alert("Deu 404!");
         } else {
@@ -274,8 +279,8 @@
       .then(function (resposta) {
         console.log("valor investido do usuario" + valorInvestido);
         if (resposta.ok) {
-          window.alert('Parabéns, você está cada dia mais próximo de alcançar a sua meta!!')
-            window.location = "dashboard.html";
+          
+          exibirConfirmacao();
             adicionarValor(idMeta);
         } else if (resposta.status == 404) {
           window.alert("Deu 404!");
@@ -328,6 +333,15 @@
     return false;
   }
 
+  function exibirConfirmacao() {
+  console.log("Exibindo confirmação");
+  confirmacao.style.display = 'flex';
+
+  setTimeout(function() {
+    console.log("Redirecionando...");
+    window.location.href = 'dashboard.html';
+  }, 10000000);
+}
 
 
 

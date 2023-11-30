@@ -30,7 +30,6 @@ main {
     height: 60%;
     display: flex;
     flex-direction: column;
-    /* overflow-x: auto; */
     scrollbar-width: thin;
 }
 
@@ -147,13 +146,7 @@ main {
     align-items: center;
 }
 
-/* #div_investir {
-    display: none;
-}
 
-#btn_salvar {
-    display: none;
-} */
 
 .rotulos-investimentos {
     display: flex;
@@ -247,4 +240,18 @@ main {
 .ancora-certificado:hover {
     background-color: #00072D;
     color: white;
+}
+
+.alerta-personalizado {
+    position: absolute;
+    height: 300px;
+    width: 800px;
+    background-color: white;
+    border: 2px solid #00072D;
+    display: none;
+    align-items: center;
+    top: 20%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+    border-radius: 3rem;
 }
