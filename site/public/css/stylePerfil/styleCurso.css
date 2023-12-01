@@ -140,6 +140,18 @@ font-size: 24px;
     justify-content: center;
 }
 
+.resultado p{
+    font-size: 32px;
+}
+
+.certificado {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 20%;
+}
+
 .ancora-certificado {
     text-decoration: none;
     background-color: white;

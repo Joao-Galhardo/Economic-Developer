@@ -171,14 +171,15 @@ function selecionarResposta(index) {
 
         resultado.scrollIntoView({behavior: 'smooth'})
 
-       descricaoResultado.innerHTML = `Voce acertou um total de ${score} questões <br>`
+        descricaoResultado.innerHTML = `Voce acertou um total de ${score} questões <br>`
         if (score >= 10) {
-           descricaoResultado.innerHTML += `Parabéns, voce foi aprovado, aqui esta o seu certificado <br>
-            <a class="ancora-certificado" href="../imagens/Certificado.pdf">Certificado</a>`
+            descricaoResultado.innerHTML += `Parabéns, voce foi aprovado, aqui esta o seu certificado <br>`
+
+           certificado.innerHTML=`<a target="_blank" class="ancora-certificado" href="../imagens/Certificado.pdf">Certificado</a>`
 
             inserirCertificado();
         } else {
-           descricaoResultado.innerHTML += "Infelizmente, você não foi aprovado, que tal estudar mais um pouco e tentar novamente mais tarde?"
+            descricaoResultado.innerHTML += "Infelizmente, você não foi aprovado, que tal estudar mais um pouco e tentar novamente mais tarde?"
         }
     }
 };

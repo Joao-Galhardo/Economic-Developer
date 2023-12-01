@@ -16,6 +16,7 @@
 
 <body>
   <main>
+    
     <div class="login-container" id="login-container">
       <div class="form-container">
         <form class="form form-login">
@@ -132,8 +133,7 @@ if (dtNascVarCadastro == "" || nivelConhecimentoVarCadastro == null) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      // crie um atributo que recebe o valor recuperado aqui
-      // Agora vá para o arquivo routes/usuario.js
+      
       nomeServerCadastro: nomeVarCadastro,
       emailServerCadastro: emailVarCadastro,
       senhaServerCadastro: senhaVarCadastro,
@@ -145,24 +145,20 @@ if (dtNascVarCadastro == "" || nivelConhecimentoVarCadastro == null) {
       console.log("resposta: ", resposta);
 
       if (resposta.ok) {
-        // cardErro.style.display = "block";
-
-        // mensagem_erro.innerHTML =
-        //   "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+        
 
         setTimeout(() => {
           window.location = "/cadastro.html";
         }, "2000");
 
-        // limparFormulario();
-        // finalizarAguardar();
+        
       } else {
         throw "Houve um erro ao tentar realizar o cadastro!";
       }
     })
     .catch(function (resposta) {
       console.log(`#ERRO: ${resposta}`);
-      // finalizarAguardar();
+      
     });
 
   return false;
@@ -208,7 +204,7 @@ if (dtNascVarCadastro == "" || nivelConhecimentoVarCadastro == null) {
           setTimeout(function () {
 
             window.location = "/dashboard/dashboard.html";
-          }, 1000); // apenas para exibir o loading
+          }, 1000); 
 
         });
 
@@ -218,7 +214,7 @@ if (dtNascVarCadastro == "" || nivelConhecimentoVarCadastro == null) {
 
         resposta.text().then(texto => {
           console.error(texto);
-      
+          
         });
       }
 
