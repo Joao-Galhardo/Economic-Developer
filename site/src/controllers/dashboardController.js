@@ -82,6 +82,26 @@ function deletar(req, res) {
             );
     }
 
+    function deletarInvestimentos(req, res) {
+        
+        var idMeta = req.params.idMeta
+        var idUsuario = req.params.idUsuario;
+    
+        dashboardModel.deletarInvestimentos(idMeta, idUsuario)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            )
+            .catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log("Houve um erro ao deletar o post: ", erro.sqlMessage);
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+
     function atualizarValor(req, res) {
         var novoValor = req.body.valorInvestido
         var idMeta = req.params.idMeta
@@ -182,5 +202,6 @@ module.exports = {
     atualizarValor,
     adicionarValor,
     atualizarGrafico,
-    listarCertificado
+    listarCertificado,
+    deletarInvestimentos
 }

@@ -179,7 +179,7 @@
                             </div>
                         </div>
                         <div class="botoes-metas">
-                            <button class="btn-excluir" onclick="deletar(${metas.idMeta
+                            <button class="btn-excluir" onclick="deletarInvestimentos(${metas.idMeta
                 })">Excluir</button>
                             <button class="btn-investir" onclick="abrirInvestir(${metas.idMeta
                 })">Investir</button>
@@ -245,6 +245,32 @@
       .then(function (resposta) {
         if (resposta.ok) {
           window.location = "dashboard.html";
+          
+        } else if (resposta.status == 404) {
+          window.alert("Deu 404!");
+        } else {
+          throw (
+            "Houve um erro ao tentar realizar a postagem! Código da resposta: " +
+            resposta.status
+          );
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+  }
+
+  function deletarInvestimentos(idMeta,idUsuario) {
+    console.log("Criar função de apagar post escolhido - ID" + idMeta);
+    fetch(`/dashboard/deletarInvestimentos/${sessionStorage.ID_USUARIO}/${idMeta}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then(function (resposta) {
+        if (resposta.ok) {
+          deletar(idMeta);
           
         } else if (resposta.status == 404) {
           window.alert("Deu 404!");

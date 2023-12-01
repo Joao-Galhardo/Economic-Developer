@@ -12,6 +12,10 @@ router.delete("/deletar/:idUsuario/:idMeta", function (req, res) {
     dashboardController.deletar(req, res);
 });
 
+router.delete("/deletarInvestimentos/:idUsuario/:idMeta", function (req, res) {
+    dashboardController.deletarInvestimentos(req, res);
+});
+
 router.put("/editar/:idUsuario/:idMeta", function (req, res) {
     dashboardController.atualizarValor(req, res);
 });
@@ -27,5 +31,7 @@ router.get("/atualizarGrafico/:idUsuario", function (req,res) {
 router.get("/listarCertificado/:idUsuario", function(req, res) {
     dashboardController.listarCertificado(req,res);
 });
+
+
 
 module.exports = router;
